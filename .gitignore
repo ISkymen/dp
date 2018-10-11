@@ -30,3 +30,6 @@ Makefile
 docker-compose.yml
 docker-sync.yml
 traefik.yml
+
+# Db dump
+db
