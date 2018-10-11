@@ -1,0 +1,10 @@
+uuid: 5a81cae5-f9c2-41fb-8a00-d4508a180880
+langcode: en
+status: true
+dependencies:
+  module:
+    - dp_news
+id: news.card_small
+label: 'Card Small'
+targetEntityType: news
+cache: true

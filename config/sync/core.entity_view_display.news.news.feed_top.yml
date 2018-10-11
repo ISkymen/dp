@@ -1,0 +1,50 @@
+uuid: 7f9a5326-864a-4b59-82d6-9133f910ad62
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.news.feed_top
+    - field.field.news.news.field_news_video
+  module:
+    - dp_news
+    - image
+    - video_embed_field
+id: news.news.feed_top
+targetEntityType: news
+bundle: news
+mode: feed_top
+content:
+  field_news_video:
+    type: video_embed_field_thumbnail
+    weight: 2
+    region: content
+    label: hidden
+    settings:
+      image_style: ''
+      link_image_to: ''
+    third_party_settings: {  }
+  photo:
+    label: hidden
+    type: image_url
+    weight: 1
+    region: content
+    settings:
+      image_style: ''
+    third_party_settings: {  }
+  title:
+    label: hidden
+    type: string
+    weight: 0
+    region: content
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+hidden:
+  body: true
+  image: true
+  langcode: true
+  rss: true
+  rubric: true
+  tags: true
+  topic: true
+  uid: true

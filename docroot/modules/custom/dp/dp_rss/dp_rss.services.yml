@@ -1,0 +1,4 @@
+services:
+  dp_rss.data:
+    class: Drupal\dp_rss\AggregateData
+    arguments: ['@database']

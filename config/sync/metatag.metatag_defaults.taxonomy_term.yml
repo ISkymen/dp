@@ -1,0 +1,14 @@
+uuid: 6877e9cb-b1e2-4cb8-9901-1e1ecd298087
+langcode: ru
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: 92bXZdyYJ5xqukdfmGRr_CYcwm1vfuS8b8aJ7X_G7E0
+id: taxonomy_term
+label: 'Термин таксономии'
+tags:
+  canonical_url: '[term:url]'
+  description: 'Подборка материалов на тему "[term:name]". Новости, мнения, фоторепортажи.'
+  title: '[term:name] | [site:name]'
+  og_title: 'Подборка материалов на тему "[term:name]".'
+  og_description: 'Новости, мнения, фоторепортажи.'

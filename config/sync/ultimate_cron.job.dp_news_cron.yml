@@ -1,0 +1,29 @@
+uuid: 91133344-e948-4d10-b6db-e39444ce846b
+langcode: en
+status: true
+dependencies:
+  module:
+    - dp_news
+title: 'Check for scheduled news'
+id: dp_news_cron
+weight: 0
+module: dp_news
+callback: dp_news_cron
+scheduler:
+  id: simple
+  configuration:
+    rules:
+      - '* * * * *'
+launcher:
+  id: serial
+  configuration:
+    timeouts:
+      lock_timeout: 3600
+    launcher:
+      thread: 0
+logger:
+  id: database
+  configuration:
+    method: '3'
+    expire: 1209600
+    retain: 1000

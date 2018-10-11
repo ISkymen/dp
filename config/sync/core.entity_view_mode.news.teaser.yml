@@ -1,0 +1,12 @@
+uuid: 9eb08797-e3ff-4bb6-abf1-c8f9ffe24f31
+langcode: ru
+status: false
+dependencies:
+  module:
+    - dp_news
+_core:
+  default_config_hash: jxHWy6W67UuPElb3Ucyd77XW0R7LzwupPoxRBQYV1QQ
+id: news.teaser
+label: Анонс
+targetEntityType: news
+cache: true

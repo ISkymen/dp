@@ -1,0 +1,24 @@
+base:
+  version: "1.0"
+  css:
+    theme:
+      css/styles.css: {}
+  js:
+    js/scripts.js: {}
+  dependencies:
+    - core/jquery
+    - core/jquery.once
+swiper:
+# @TODO Link to global vendor directory.
+# Now it's not possible: https://www.drupal.org/project/documentation/issues/2605130
+# This solution not help me: https://www.drupal.org/project/vendor_stream_wrapper
+# So I copy library to theme folder
+  version: "1.0"
+  css:
+    theme:
+      vendor/nolimits4web/swiper/dist/css/swiper.min.css: {}
+  js:
+    vendor/nolimits4web/swiper/dist/js/swiper.min.js: {}
+  dependencies:
+    - core/jquery
+    - core/jquery.once

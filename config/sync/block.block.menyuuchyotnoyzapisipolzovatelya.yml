@@ -1,0 +1,33 @@
+uuid: 0139873e-fe1c-4f8e-8e0b-f3fe4a2628ab
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.account
+  module:
+    - system
+    - user
+  theme:
+    - dp
+id: menyuuchyotnoyzapisipolzovatelya
+theme: dp
+region: sidebar_first
+weight: -14
+provider: null
+plugin: 'system_menu_block:account'
+settings:
+  id: 'system_menu_block:account'
+  label: 'Меню учётной записи пользователя'
+  provider: system
+  label_display: '0'
+  level: 1
+  depth: 0
+visibility:
+  user_role:
+    id: user_role
+    roles:
+      administrator: administrator
+      editor: editor
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'

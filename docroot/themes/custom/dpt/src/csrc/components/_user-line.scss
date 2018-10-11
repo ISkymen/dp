@@ -1,0 +1,64 @@
+.s-user-line {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  cursor: pointer;
+  color: $c-1;
+  padding-right: 10px;
+  padding-left: 25px;
+  @include icon(account-outline, left, $fs-3, $c-1);
+
+  @include desktop {
+    padding-left: 0;
+    &::after {
+      content: none;
+    }
+  }
+
+  &__image {
+    display: none;
+    @include desktop {
+      display: block;
+      margin-right: 10px;
+      img {
+        border-radius: 50%;
+        border: 1px solid transparent;
+        @include transition();
+        display: block;
+        .s-user-line:hover & {
+          border-color: $c-1;
+        }
+      }
+    }
+
+  }
+  &__name {
+    border-bottom: 1px solid transparent;
+    @include transition();
+    .s-user-line:hover & {
+      border-color: $c-1;
+    }
+  }
+  &__link {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    font-size: 0;
+  }
+
+  &--light {
+    color: $c-3-L10;
+    &::after {
+      color: $c-3-L10;
+    }
+    &:hover .s-user-line__name {
+      border-color: $c-3-L10;
+    }
+    &:hover .s-user-line__image img {
+      border-color: $c-3-L10;
+    }
+  }
+}

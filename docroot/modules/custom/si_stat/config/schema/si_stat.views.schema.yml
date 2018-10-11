@@ -1,0 +1,9 @@
+# Schema for the views plugins of the SI Statistics module.
+
+views.field.stat_numeric:
+  type: views.field.numeric
+  label: 'Numeric values from the SI Statistics module'
+
+views.field.si_stat_timestamp:
+  type: views.field.date
+  label: 'The most recent time the node has been viewed'

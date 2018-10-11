@@ -1,0 +1,39 @@
+<?php
+
+/**
+ * Implements hook_theme().
+ */
+function dp_reward_theme($existing, $type, $theme, $path) {
+  return array(
+    'stat_page' => array(
+      'variables' => array('common' => NULL, 'users' => NULL, 'profit' => NULL, 'service' => NULL),
+      'template' => 'stat-page',
+    ),
+    'profit_page' => array(
+      'variables' => array('profit' => NULL, 'source_month' => NULL, 'source_today' => NULL),
+      'template' => 'profit-page',
+    ),
+    'dp_block_editors' => array(
+      'variables' => array('users' => NULL, 'totalDay' => NULL, 'totalMonth' => NULL, ),
+      'template' => 'dp-block--editors',
+    ),
+    'dp_block_profit' => array(
+      'variables' => array('profit' => NULL),
+      'template' => 'dp-block--profit',
+    ),
+  );
+}
+
+/**
+ * Implements hook_cron().
+ */
+
+function dp_reward_cron() {
+  $config = \Drupal::config('dp_reward.settings');
+  $cron = $config->get('cron');
+  if ($cron) {
+    \Drupal::service('dp_reward.data')->getTotalProfitRange('today');
+    \Drupal::service('dp_reward.data')->getTotalProfitRange('thismonth');
+    return;
+  }
+}

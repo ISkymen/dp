@@ -1,0 +1,24 @@
+uuid: 43241a5a-fe91-4b94-838d-cb8b8d5e8a0b
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.article_block
+  module:
+    - views
+  theme:
+    - dpt
+id: dpt_views_block__article_block_artfront
+theme: dpt
+region: front_main
+weight: -12
+provider: null
+plugin: 'views_block:article_block-artfront'
+settings:
+  id: 'views_block:article_block-artfront'
+  label: ''
+  provider: views
+  label_display: visible
+  views_label: ''
+  items_per_page: none
+visibility: {  }

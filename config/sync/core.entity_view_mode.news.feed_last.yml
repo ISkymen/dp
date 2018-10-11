@@ -1,0 +1,10 @@
+uuid: 0740ac22-337f-4115-bd2b-8aa074464f43
+langcode: en
+status: true
+dependencies:
+  module:
+    - dp_news
+id: news.feed_last
+label: 'Feed Last'
+targetEntityType: news
+cache: true

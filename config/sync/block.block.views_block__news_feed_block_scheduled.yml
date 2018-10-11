@@ -1,0 +1,33 @@
+uuid: 46d0fae0-af45-4aa9-bdb8-ea5dbbc75bf6
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.news_feed
+  module:
+    - user
+    - views
+  theme:
+    - dp
+id: views_block__news_feed_block_scheduled
+theme: dp
+region: sidebar_second
+weight: -15
+provider: null
+plugin: 'views_block:news_feed-block_scheduled'
+settings:
+  id: 'views_block:news_feed-block_scheduled'
+  label: ''
+  provider: views
+  label_display: visible
+  views_label: ''
+  items_per_page: none
+visibility:
+  user_role:
+    id: user_role
+    roles:
+      administrator: administrator
+      editor: editor
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'

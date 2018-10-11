@@ -1,0 +1,20 @@
+your_message: ter
+editors_owners_ratio: '0.5'
+editors_ratio: '0.5'
+views_ratio: '0.5'
+google_client_id: 363750734341-60rocgmfgupogvgn3n071dllhnvi4hpl.apps.googleusercontent.com
+google_client_secret: V9Ua66LWAQmqyC4dgxU0MpLz
+google_client_uri: null
+google_account_id: pub-4318230466334591
+google_url_channel_name: donpress.com
+google_redirect_uri: 'http://dp.skm.pp.ua/reward'
+status_timeout: '5'
+active_timeout: '900'
+google_json_url: ''
+yandex_json_url: ''
+news_image: null
+copyright: 'Любое использование материалов сайта DonPress.com разрешается исключительно при условии указания названия ресурса (Интернет-издание «ДонПресс») и активной (не закрытой от поисковиков) ссылки на постоянный адрес страницы с материалом. Нарушение авторских прав преследуется по закону.'
+counters: "<link href='//fonts.googleapis.com/css?family=PT+Sans:400,700&subset=cyrillic,latin' rel='stylesheet' type='text/css'>\r\n<!--LiveInternet counter--><script type=\"text/javascript\">\r\ndocument.write(\"<a href='//www.liveinternet.ru/click' \"+\r\n\"target=_blank><img src='//counter.yadro.ru/hit?t17.17;r\"+\r\nescape(document.referrer)+((typeof(screen)==\"undefined\")?\"\":\r\n\";s\"+screen.width+\"*\"+screen.height+\"*\"+(screen.colorDepth?\r\nscreen.colorDepth:screen.pixelDepth))+\";u\"+escape(document.URL)+\r\n\";\"+Math.random()+\r\n\"' alt='' title='LiveInternet: показано число просмотров за 24\"+\r\n\" часа, посетителей за 24 часа и за сегодня' \"+\r\n\"border='0' width='88' height='31'><\\/a>\")\r\n</script><!--/LiveInternet-->"
+exchange_timeout: '6'
+profit_timeout: '30'
+cron: 1

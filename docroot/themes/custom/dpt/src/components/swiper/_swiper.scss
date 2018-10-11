@@ -1,0 +1,90 @@
+.swiper-container.swiper-container-horizontal {
+  margin-top: -55px;
+  .swiper {
+    &-pagination {
+      position: static;
+      margin: 15px 0;
+      text-align: right;
+      &-bullet {
+        width: 15px;
+        height: 15px;
+        outline: 0;
+        border-radius: unset;
+        background: $c-blue-D1;
+        opacity: 0.3;
+        @include transition();
+        &-active {
+          opacity: 1;
+        }
+        &:hover {
+          opacity: 1;
+        }
+      }
+      &.swiper-pagination-bullets {
+        bottom: auto;
+        .swiper-pagination-bullet {
+          &:last-child {
+            margin-right: 0;
+          }
+        }
+      }
+    }
+    &-button-next, &-button-prev {
+      top: 61%;
+      outline: 0;
+      background: none;
+      color: $c-orange-D1;
+      @include transition();
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      @include x-wide {
+        top: 58%;
+      }
+
+      &::after {
+        font-family: "Material Design Icons";
+        font-size: 2.5rem;
+        line-height: 1;
+        font-weight: normal;
+        color: inherit;
+
+      }
+      &:hover {
+        color: $c-orange;
+      }
+    }
+    &-button-next {
+      &::after {
+        content: mdi(chevron-double-right);
+      }
+    }
+    &-button-prev {
+      &::after {
+        content: mdi(chevron-double-left);
+      }
+    }
+  }
+  .s-card--full {
+    min-height: 200px;
+
+  }
+  .content {
+    p {
+      margin-bottom: 0;
+    }
+  }
+
+  &.disabled {
+    margin-top: unset;
+
+    .swiper-wrapper {
+      transform: translate3d(0px, 0, 0) !important;
+    }
+    .swiper-pagination,
+    .swiper-button-next,
+    .swiper-button-prev {
+      display: none;
+    }
+  }
+}

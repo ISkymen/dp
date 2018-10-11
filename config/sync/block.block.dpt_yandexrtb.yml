@@ -1,0 +1,33 @@
+uuid: 034c69ec-3284-40f7-ae2b-527cd3a79cd6
+langcode: ru
+status: false
+dependencies:
+  content:
+    - 'block_content:basic:1c0bd311-902b-4250-9799-c132c7106a31'
+  module:
+    - block_content
+    - user
+  theme:
+    - dpt
+id: dpt_yandexrtb
+theme: dpt
+region: content
+weight: -14
+provider: null
+plugin: 'block_content:1c0bd311-902b-4250-9799-c132c7106a31'
+settings:
+  id: 'block_content:1c0bd311-902b-4250-9799-c132c7106a31'
+  label: 'Yandex RTB'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  user_role:
+    id: user_role
+    roles:
+      anonymous: anonymous
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'

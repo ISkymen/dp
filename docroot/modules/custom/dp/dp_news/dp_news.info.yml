@@ -1,0 +1,5 @@
+name: 'Donpress News'
+type: module
+description: 'News for Donpress.com'
+core: 8.x
+package: 'DonPress'

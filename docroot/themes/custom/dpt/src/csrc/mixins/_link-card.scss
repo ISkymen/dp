@@ -1,0 +1,15 @@
+@mixin link-card() {
+  position: relative;
+  @include transition();
+  &:hover {
+    background: $c-blue-L3;
+  }
+  a {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    font-size: 0;
+  }
+}

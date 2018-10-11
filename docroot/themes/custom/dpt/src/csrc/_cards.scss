@@ -1,0 +1,102 @@
+.s-cards {
+  @include tablet {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  &--popular {
+    @include wide {
+      background: white;
+      padding: 2% 2% 0;
+    }
+    @include tablet {
+      .s-card {
+        width: 49%;
+        margin-bottom: 15px;
+      }
+    }
+    @include wide {
+      .s-card {
+        width: 32%;
+      }
+    }
+  }
+
+
+  &--top {
+    @include tablet {
+      .s-card--large {
+        width: 66.1%;
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &--attop {
+    @include tablet {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 32.35%;
+    }
+    .s-card {
+      width: auto;
+      @include tablet {
+        margin: 0;
+      }
+      @include x-wide {
+        font-size: 16px;
+      }
+    }
+  }
+
+  &--artfrontatt {
+    width: 100%;
+    @include tablet {
+      .s-card {
+        width: 49%;
+      }
+    }
+  }
+
+  &--similar {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    background: white;
+    @include tablet {
+      padding-bottom: 5px;
+      margin: 0 -5px;
+    }
+    .s-card {
+      padding: 0;
+      border: 1px solid transparent;
+      box-sizing: border-box;
+      //@include transition();
+      //&:hover {
+      //  background: $c-blue-L3;
+      //  //border-color: $c-blue-L50;
+      //}
+      @include tablet {
+        width: 49%;
+        margin: 0;
+        padding: 5px;
+      }
+      @include x-wide {
+        font-size: 18px;
+        margin: 0;
+        width: 24%;
+      }
+    }
+    .s-card__title {
+      font-size: 0.8em;
+      line-height: 1.2;
+      padding: 5px 0 0;
+      position: relative;
+      z-index: 20;
+      pointer-events: none;
+    }
+  }
+
+}

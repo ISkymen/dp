@@ -1,0 +1,6 @@
+name: 'dp_stop_adsense'
+type: module
+description: 'Stop AdSense block on certain pages'
+core: 8.x
+package: 'DonPress'
+configure: dp_stop_adsense.settings

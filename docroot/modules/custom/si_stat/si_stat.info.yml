@@ -1,0 +1,9 @@
+name: SI Stat
+type: module
+description: 'Logs content si_stat for your site.'
+package: SI
+# version: VERSION
+core: 8.x
+configure: si_stat.settings
+dependencies:
+  - node

@@ -1,0 +1,57 @@
+uuid: 1789f0b4-42b6-4f43-a2d7-3ec154c8eb1b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.topics.field_tax_views
+    - field.field.taxonomy_term.topics.field_topic_image
+    - image.style.thumbnail
+    - taxonomy.vocabulary.topics
+  module:
+    - image
+    - path
+    - text
+id: taxonomy_term.topics.default
+targetEntityType: taxonomy_term
+bundle: topics
+mode: default
+content:
+  description:
+    type: text_textarea
+    weight: 1
+    region: content
+    settings:
+      placeholder: ''
+      rows: 5
+    third_party_settings: {  }
+  field_topic_image:
+    weight: 4
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+    type: image_image
+    region: content
+  langcode:
+    type: language_select
+    weight: 2
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  field_tax_views: true

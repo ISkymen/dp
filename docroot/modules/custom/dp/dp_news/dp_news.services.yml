@@ -1,0 +1,4 @@
+services:
+  dp_news.data:
+    class: Drupal\dp_news\DataQuery
+    arguments: ['@database']

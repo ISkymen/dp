@@ -1,0 +1,15 @@
+uuid: 0d7d5e6f-6a71-495a-82ee-28424e5effbf
+langcode: en
+status: true
+dependencies: {  }
+name: msq
+label: 'Msq (400x400)'
+effects:
+  9eb4d167-5830-4ffe-a468-b5f767d53877:
+    uuid: 9eb4d167-5830-4ffe-a468-b5f767d53877
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 400
+      height: 400
+      anchor: center-center

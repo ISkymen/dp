@@ -1,0 +1,19 @@
+uuid: 60bb040f-a57a-435e-9c5f-ceac5b25b9c9
+langcode: en
+status: true
+dependencies:
+  module:
+    - dp_news
+    - video_embed_field
+id: news.field_news_video
+field_name: field_news_video
+entity_type: news
+type: video_embed_field
+settings: {  }
+module: video_embed_field
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

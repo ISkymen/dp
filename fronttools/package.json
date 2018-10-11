@@ -1,0 +1,31 @@
+{
+  "name": "skymen",
+  "version": "1.0.0",
+  "description": "Skymen's web tools",
+  "author": "Skymen",
+  "license": "ISC",
+  "dependencies": {
+    "@mdi/font": "latest",
+    "browser-sync": "latest",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "latest",
+    "gulp-cli": "^2.0.1",
+    "gulp-concat": "latest",
+    "gulp-csscomb": "latest",
+    "gulp-imagemin": "latest",
+    "gulp-plumber": "latest",
+    "gulp-sass": "latest",
+    "gulp-shell": "latest",
+    "gulp-size": "latest",
+    "gulp-sourcemaps": "latest",
+    "gulp-svg-sprite": "latest",
+    "gulp-uglify": "latest",
+    "gulp-watch": "latest",
+    "gulp.spritesmith": "latest",
+    "kss": "latest",
+    "merge-stream": "latest",
+    "susy": "latest",
+    "vinyl-buffer": "latest",
+    "yargs": "latest"
+  }
+}

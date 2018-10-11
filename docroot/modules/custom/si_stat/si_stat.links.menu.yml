@@ -1,0 +1,6 @@
+si_stat.settings:
+  title: SI Stat
+  description: 'Configure the logging of content statistics.'
+  route_name: si_stat.settings
+  parent: system.admin_config_system
+  weight: -15

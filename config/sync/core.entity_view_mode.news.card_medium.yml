@@ -1,0 +1,10 @@
+uuid: e360958c-143f-4a3a-ab05-018c5dc61549
+langcode: en
+status: true
+dependencies:
+  module:
+    - dp_news
+id: news.card_medium
+label: 'Card Medium'
+targetEntityType: news
+cache: true

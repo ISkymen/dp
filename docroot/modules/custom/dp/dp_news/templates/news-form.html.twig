@@ -1,0 +1,58 @@
+{#
+/**
+ * @file news.html.twig
+ * Default theme implementation to present News data.
+ *
+ * This template is used when viewing News pages.
+ *
+ *
+ * Available variables:
+ * - content: A list of content items. Use 'content' to print all content, or
+ * - attributes: HTML attributes for the container element.
+ *
+ * @see template_preprocess_news()
+ *
+ * @ingroup themeable
+ */
+#}
+
+  {#{{ dump(form|keys) }}#}
+
+{% if form.is_admin %}
+  {{ form }}
+{% else %}
+  {{ form.form_build_id }}
+  {{ form.form_token }}
+  {{ form.form_id }}
+
+  {{ form.title }}
+  {{ form.body }}
+  <div class="s-form__wrap s-form__wrap--mark">
+    {{ form.rubric }}
+    {{ form.tags }}
+  </div>
+  {{ form.image }}
+
+  <details class="s-form__wrap">
+  <summary>
+  Медиа-материалы / Сюжет
+  </summary>
+    {{ form.photo }}
+  {{ form.field_news_video }}
+    {{ form.topic }}
+  </details>
+  <div class="s-form__wrap">
+    {{ form.created }}
+    <div class="s-form__wrap s-form__wrap--pub">
+      {{ form.hot }}
+      {{ form.top }}
+      {{ form.rss }}
+    </div>
+  </div>
+  {{ form.actions }}
+
+
+
+
+
+{% endif %}

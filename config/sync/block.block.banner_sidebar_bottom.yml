@@ -1,0 +1,27 @@
+uuid: 41f82066-f8e6-430c-a448-0a2337a3269c
+langcode: en
+status: false
+dependencies:
+  module:
+    - adsense
+  theme:
+    - dp
+id: banner_sidebar_bottom
+theme: dp
+region: sidebar_second
+weight: -14
+provider: null
+plugin: adsense_managed_ad_block
+settings:
+  id: adsense_managed_ad_block
+  label: 'Banner sidebar bottom'
+  provider: adsense
+  label_display: '0'
+  ad_slot: '3685009526'
+  ad_format: responsive
+  ad_width: 250
+  ad_height: 250
+  ad_shape:
+    rectangle: rectangle
+  ad_align: center
+visibility: {  }

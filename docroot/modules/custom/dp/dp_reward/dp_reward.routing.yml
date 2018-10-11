@@ -1,0 +1,29 @@
+dp_reward.reward:
+  path: '/reward/{period}'
+  defaults:
+    _controller: '\Drupal\dp_reward\Controller\RewardController::content'
+    period: 'thismonth'
+  requirements:
+    _permission: 'access content'
+
+dp_reward.profit:
+  path: '/profit'
+  defaults:
+    _controller: '\Drupal\dp_reward\Controller\ProfitController::content'
+  requirements:
+    _permission: 'access content'
+
+dp_reward.profit.json:
+  path: '/profit/json'
+  defaults:
+    _controller: '\Drupal\dp_reward\Controller\ProfitController::json'
+  requirements:
+    _permission: 'access content'
+
+dp_reward.settings:
+  path: '/admin/config/dp/reward'
+  defaults:
+    _form: '\Drupal\dp_reward\Form\ConfigForm'
+    _title: 'DP Reward configuration'
+  requirements:
+    _permission: 'administer site configuration'

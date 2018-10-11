@@ -1,0 +1,193 @@
+$c-1: #313131;
+$c-2: #ffffff;
+$c-3: #cecece;
+$c-4: #34495e;
+$c-3-D10: darken($c-3, 10%);
+$c-3-D30: darken($c-3, 30%);
+$c-3-L10: lighten($c-3, 10%);
+
+$color-1: #0057b8;
+$color-2: #ffd700;
+$color-3: #ff2800;
+$color-4: #333333;
+$c: orange;
+
+$color-blue: #0B81E7;
+$color-orange: #f47e18;
+
+$light1: 20%;
+$light2: 40%;
+$light3: 47%;
+
+$dark1: 20%;
+$dark2: 30%;
+$dark3: 40%;
+
+
+$c-white: #ffffff;
+
+$c-blue: #0b81e7;
+//$c-blue-L20: rgba($c-blue, 0.3);
+//$c-blue-L40: rgba($c-blue, 0.7);
+$c-blue-L1: lighten($c-blue, $light1);
+$c-blue-L2: lighten($c-blue, $light2);
+$c-blue-L3: lighten($c-blue, $light3);
+$c-blue-D1: darken($c-blue, $dark1);
+$c-blue-D2: darken($c-blue, $dark2);
+$c-blue-D3: darken($c-blue, $dark3);
+$c-blue-T1: rgba($c-blue-L2, 0.5);
+$c-blue-T2: rgba($c-blue, 0.5);
+$c-blue-T3: rgba($c-blue, 0.5);
+
+$c-orange: #f47e18;
+$c-orange-L1: lighten($c-orange, $light1);
+$c-orange-L2: lighten($c-orange, $light2);
+$c-orange-L3: lighten($c-orange, 46%);
+$c-orange-D1: darken($c-orange, $dark1);
+$c-orange-D2: darken($c-orange, $dark2);
+$c-orange-D3: darken($c-orange, $dark3);
+$c-orange-T1: rgba($c-orange-L2, 0.5);
+$c-orange-T2: rgba($c-orange, 0.5);
+$c-orange-T3: rgba($c-orange, 0.5);
+
+$c-gray: mix($c-blue, $c-orange);
+$c-gray-L1: lighten($c-gray, $light1);
+$c-gray-L2: lighten($c-gray, $light2);
+$c-gray-L3: lighten($c-gray, $light3);
+$c-gray-D1: darken($c-gray, $dark1);
+$c-gray-D2: darken($c-gray, $dark2);
+$c-gray-D3: darken($c-gray, $dark3);
+$c-gray-T1: rgba($c-gray-L2, 0.5);
+$c-gray-T2: rgba($c-gray, 0.5);
+$c-gray-T3: rgba($c-gray, 0.5);
+
+.style-color {
+  display: flex;
+  border: 1px solid grey;
+
+  &__group {
+    width: 50%;
+    &--blue {
+      .style-color__item {
+        background: $c-blue;
+        &--L1 {
+          background: $c-blue-L1;
+        }
+        &--L2 {
+          background: $c-blue-L2;
+        }
+        &--L3 {
+          background: $c-blue-L3;
+        }
+        &--D1 {
+          background: $c-blue-D1;
+        }
+        &--D2 {
+          background: $c-blue-D2;
+        }
+        &--D3 {
+          background: $c-blue-D3;
+        }
+        &--T1 {
+          background: $c-blue-T1;
+        }
+        &--T2 {
+          background: $c-blue-T2;
+        }
+        &--T3 {
+          background: $c-blue-T3;
+        }
+      }
+    }
+    &--gray {
+      .style-color__item {
+        background: $c-gray;
+        &--L1 {
+          background: $c-gray-L1;
+        }
+        &--L2 {
+          background: $c-gray-L2;
+        }
+        &--L3 {
+          background: $c-gray-L3;
+        }
+        &--D1 {
+          background: $c-gray-D1;
+        }
+        &--D2 {
+          background: $c-gray-D2;
+        }
+        &--D3 {
+          background: $c-gray-D3;
+        }
+      }
+    }
+    &--orange {
+      .style-color__item {
+        background: $c-orange;
+        &--L1 {
+          background: $c-orange-L1;
+        }
+        &--L2 {
+          background: $c-orange-L2;
+        }
+        &--L3 {
+          background: $c-orange-L3;
+        }
+        &--D1 {
+          background: $c-orange-D1;
+        }
+        &--D2 {
+          background: $c-orange-D2;
+        }
+        &--D3 {
+          background: $c-orange-D3;
+        }
+      }
+    }
+  }
+  &__item {
+    text-align: center;
+    color: white;
+    font-size: 1.5em;
+    line-height: 2;
+    box-sizing: border-box;
+    border: 2px solid transparent;
+    &--base {
+      border-color: red;
+    }
+  }
+}
+
+@mixin site-width {
+  margin: 0 auto;
+  padding-left: 15px;
+  padding-right: 15px;
+  @include desktop {
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+  @include wide {
+    padding-left: 10%;
+    padding-right: 10%;
+  }
+  @include x-wide {
+    padding-left: 15%;
+    padding-right: 15%;
+  }
+}
+
+@mixin pad {
+  padding-left: 15px;
+  padding-right: 15px;
+  @include wide {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
+
+@mixin transition ($time: 0.2s) {
+  transition: all $time ease-in-out;
+}
+
+

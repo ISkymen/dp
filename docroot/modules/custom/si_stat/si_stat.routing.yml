@@ -1,0 +1,7 @@
+si_stat.settings:
+  path: '/admin/config/system/si-stat'
+  defaults:
+    _form: 'Drupal\si_stat\StatSettingsForm'
+    _title: 'SI Statistics'
+  requirements:
+    _permission: 'administer SI stat'

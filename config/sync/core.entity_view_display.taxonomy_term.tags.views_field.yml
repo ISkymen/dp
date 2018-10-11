@@ -1,0 +1,41 @@
+uuid: dd509753-fe13-418b-a262-c231c7e4fe02
+langcode: en
+status: false
+dependencies:
+  config:
+    - core.entity_view_mode.taxonomy_term.views_field
+    - taxonomy.vocabulary.tags
+    - views.view.news_teaser
+  module:
+    - views_field_formatter
+id: taxonomy_term.tags.views_field
+targetEntityType: taxonomy_term
+bundle: tags
+mode: views_field
+content:
+  description:
+    label: hidden
+    type: views_field_formatter
+    weight: 0
+    region: content
+    settings:
+      view: 'news_teaser::block_1'
+      arguments:
+        field_value:
+          weight: '0'
+          checked: 0
+        entity_id:
+          checked: '1'
+          weight: '0'
+        delta:
+          checked: '1'
+          weight: '0'
+        entity_revision_id:
+          weight: '0'
+          checked: 0
+      implode_character: ''
+      hide_empty: 0
+      multiple: 0
+    third_party_settings: {  }
+hidden:
+  langcode: true

@@ -1,0 +1,24 @@
+uuid: aac79324-aa8d-4d63-b228-3e8d70ff9b7f
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.social
+  module:
+    - system
+  theme:
+    - dpt
+id: dpt_social
+theme: dpt
+region: header_nav
+weight: -12
+provider: null
+plugin: 'system_menu_block:social'
+settings:
+  id: 'system_menu_block:social'
+  label: 'Мы в социальных сетях'
+  provider: system
+  label_display: visible
+  level: 1
+  depth: 0
+visibility: {  }

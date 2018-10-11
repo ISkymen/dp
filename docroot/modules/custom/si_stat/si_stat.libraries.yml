@@ -1,0 +1,8 @@
+drupal.si_stat:
+  version: VERSION
+  js:
+    si_stat.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/drupalSettings

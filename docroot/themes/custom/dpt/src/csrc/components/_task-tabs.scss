@@ -1,0 +1,23 @@
+.s-task-tabs {
+  padding: 0 0 5px 0;
+  margin: 0 0 5px 0;
+  border-bottom: 2px solid $c-orange;
+  li {
+    list-style: none;
+    display: inline-block;
+    a {
+      display: block;
+      background: $c-blue-L1;
+      color: $c-2;
+      text-decoration: none;
+      padding: 5px 10px;
+      @include transition();
+      &:hover {
+        background: $c-blue;
+      }
+      &.is-active {
+        background: $c-orange;
+      }
+    }
+  }
+}

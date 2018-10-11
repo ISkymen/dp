@@ -1,0 +1,33 @@
+.s-tags {
+  border-top: 1px solid $c-3;
+  padding-top: 20px;
+  margin-top: 20px;
+  a {
+    display: inline-block;
+    background: $c-blue-L1;
+    border-radius: 2px;
+    border: 1px solid $c-blue;
+    padding: 0 10px;
+    margin: 5px;
+    color: $c-white;
+    font-size: 1em;
+    line-height: 1.5;
+    text-decoration: none;
+    @include transition();
+    &:hover {
+      background: $c-blue;
+    }
+  }
+
+
+
+  .field__label {
+    display: inline-block;
+    padding-right: 10px;
+    color: $c-blue-D1;
+    font-weight: bold;
+    &::after {
+      content: ": ";
+    }
+  }
+}

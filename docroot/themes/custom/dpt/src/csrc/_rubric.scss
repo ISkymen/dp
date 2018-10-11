@@ -1,0 +1,137 @@
+.s-rubrics {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.s-rubric {
+  width: 100%;
+  margin-bottom: 20px;
+  border: 1px solid $c-3-L10;
+
+  .s-rubrics--block & {  // @TODO
+    background: $c-2;
+    @include tablet {
+      width: 49%;
+      .path-news & {
+        width: 32%;
+      }
+    }
+    @include desktop {
+      width: 24%;
+    }
+  }
+
+  .s-rubrics--page & {  // @TODO
+    background: $c-2;
+    @include tablet {
+      width: 49%;
+    }
+    @include x-wide {
+      width: 24%;
+    }
+  }
+
+
+  &__header {
+    margin: 0;
+    background: $c-blue-D1;
+    @include transition();
+    &:hover {
+      background: $c-blue-D2;
+    }
+    a {
+      display: block;
+      font-size: 14px;
+      font-weight: bold;
+      text-transform: uppercase;
+      line-height: 2.5;
+      color: rgb(255, 255, 255);
+      text-decoration: none;
+      padding: 0 10px;
+      &:hover {
+        text-decoration: underline;
+      }
+      @include tablet {
+        font-size: 12px;
+      }
+      @include x-wide {
+        font-size: 14px;
+      }
+    }
+
+  }
+
+  &__news {
+    &-image {
+      font-size: 0;
+      overflow: hidden;
+      margin-bottom: 15px;
+      border-bottom: 1px solid $c-gray-L2;
+      @include desktop {
+        margin-bottom: 25px;
+      }
+      img {
+        width: 100%;
+        height: auto;
+        @include transition();
+      }
+    }
+    &-item {
+      position: relative;
+      font-size: 14px;
+      color: $c-blue-D3;
+      line-height: 1.5;
+      @include transition();
+      &:not(:first-child) {
+        padding: 10px 10px 0;
+        @include desktop {
+          padding: 20px 10px 0;
+        }
+      }
+      @include x-wide {
+        font-size: 16px;
+      }
+      &:hover {
+
+        color: $c-blue;
+        .s-info-line {
+          color: $c-gray-D2;
+        }
+        img {
+          transform: scale(1.03);
+        }
+      }
+      .s-info-line {
+        color: $c-gray;
+      }
+      &:first-child .s-info-line {
+        margin: 0;
+      }
+    }
+    &-title {
+      padding: 0 0 10px;
+      line-height: 1.5;
+      @include desktop {
+        padding: 0 0 20px;
+      }
+      .s-rubric__news-item:first-child & {
+        margin: 0 10px;
+      }
+      .s-rubric__news-item:not(:last-child) & {
+        border-bottom: 1px solid $c-gray-L2;
+      }
+    }
+    &-link {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      font-size: 0;
+    }
+
+  }
+
+}
+

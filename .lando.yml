@@ -1,0 +1,60 @@
+name: dp
+
+recipe: drupal8
+
+config:
+  webroot: docroot
+  php: '7.1'
+  drush: path:/app/vendor/bin/drush
+  drupal: false
+
+proxy:
+  appserver:
+   - dp.dev.loc
+  node:
+   - db-bs.dev.loc
+
+services:
+  appserver:
+    build:
+      - "cd $LANDO_MOUNT && composer install"
+      # - "cd $LANDO_WEBROOT && drush sql-cli < ../db/db.sql && drush cr -y"
+    # run:
+
+  node:
+    type: node:8.9
+    overrides:
+      services:
+        ports: [3000-3010:3000-3010]
+
+    build:
+      - "cd $LANDO_MOUNT/fronttools && npm install"
+      - "cd $LANDO_MOUNT/fronttools && npm install -g gulp-cli"
+
+    globals:
+      gulp-cli: "latest"
+      npm: "latest"   
+
+tooling:
+  # Define `lando drush` command
+  drush:
+    service: appserver
+    cmd:
+      - "/app/vendor/bin/drush"
+
+  # Define `lando drupal` command
+  drupal:
+    service: appserver
+    cmd: /app/vendor/bin/drupal
+
+  # Define `lando blt` command
+  # blt:
+  #   service: appserver
+  #   cmd: /app/vendor/bin/blt
+
+  npm:
+    service: node
+  node:
+    service: node
+  gulp:
+    service: node

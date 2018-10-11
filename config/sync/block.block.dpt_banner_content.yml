@@ -1,0 +1,27 @@
+uuid: 80472e05-a7bb-45cd-aaf8-bde081b2f370
+langcode: en
+status: true
+dependencies:
+  module:
+    - adsense
+  theme:
+    - dpt
+id: dpt_banner_content
+theme: dpt
+region: banner_content
+weight: 0
+provider: null
+plugin: adsense_managed_ad_block
+settings:
+  id: adsense_managed_ad_block
+  label: 'Banner content'
+  provider: adsense
+  label_display: '0'
+  ad_slot: '7903909904'
+  ad_format: responsive
+  ad_width: 250
+  ad_height: 250
+  ad_shape:
+    rectangle: rectangle
+  ad_align: center
+visibility: {  }

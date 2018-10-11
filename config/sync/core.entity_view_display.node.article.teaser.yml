@@ -1,0 +1,40 @@
+uuid: bb8b8c4f-ffa6-41da-8a6c-45c0aa54705b
+langcode: ru
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.article.body
+    - field.field.node.article.field_image
+    - node.type.article
+  module:
+    - text
+    - user
+_core:
+  default_config_hash: 4NcL2hSQZBpJbYtNuh5jC6kyQTcAc1m5bQpTegEWEso
+id: node.article.teaser
+targetEntityType: node
+bundle: article
+mode: teaser
+content:
+  addtoany:
+    weight: 5
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  body:
+    type: text_summary_or_trimmed
+    weight: 0
+    region: content
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    label: hidden
+  links:
+    weight: 100
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  field_image: true
+  langcode: true

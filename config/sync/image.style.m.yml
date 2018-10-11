@@ -1,0 +1,15 @@
+uuid: 831ea327-1ef5-47b0-91a0-ca196ab8a202
+langcode: en
+status: true
+dependencies: {  }
+name: m
+label: 'M (400x300)'
+effects:
+  18f3ea03-c956-46ac-9682-c99c26ee4cd7:
+    uuid: 18f3ea03-c956-46ac-9682-c99c26ee4cd7
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 400
+      height: 300
+      anchor: center-center

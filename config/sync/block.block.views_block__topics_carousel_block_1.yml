@@ -1,0 +1,30 @@
+uuid: 953c6443-fdb5-44ee-85f0-6254d7c7c60b
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.topics_carousel
+  module:
+    - system
+    - views
+  theme:
+    - dp
+id: views_block__topics_carousel_block_1
+theme: dp
+region: sidebar_first
+weight: -13
+provider: null
+plugin: 'views_block:topics_carousel-block_1'
+settings:
+  id: 'views_block:topics_carousel-block_1'
+  label: ''
+  provider: views
+  label_display: visible
+  views_label: ''
+  items_per_page: none
+visibility:
+  request_path:
+    id: request_path
+    pages: '<front>'
+    negate: false
+    context_mapping: {  }

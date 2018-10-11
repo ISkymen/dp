@@ -1,0 +1,42 @@
+{#
+/**
+ * @file
+ * Profile ws custom block.
+ */
+#}
+
+<div class="reward-block">
+
+
+    {% for user in users %}
+        {% if user.active == TRUE %}
+            <div class="reward-block__line">
+                <div class="reward-block__user reward-block__user--{{ user.status }}">
+                    <a class="reward-block__user-name" href="{{ user.user_path }}">{{ user.name }}</a>
+                    <div class="reward-block__user-access">{{ user.access }}</div>
+                </div>
+                <div class="reward-block__stat reward-block__stat--day">
+                    <div class="reward-block__stat-quantity">{{ user.quantityDay }}</div>
+                    <div class="reward-block__stat-views">{{ user.viewsDay }}</div></div>
+                <div class="reward-block__stat reward-block__stat--month">
+                    <div class="reward-block__stat-quantity">{{ user.quantityMonth }}</div>
+                    <div class="reward-block__stat-views">{{ user.viewsMonth }}</div></div>
+            </div>
+        {% endif %}
+    {% endfor %}
+
+
+    <div class="reward-block__line">
+        <div class="reward-block__user reward-block__user--total">
+            <a href="/reward" class="reward-block__link">Всего материалов за сегодня/месяц и количество их просмотров за сегодня</a>
+        </div>
+        <div class="reward-block__stat reward-block__stat--day">
+            <div class="reward-block__stat-quantity">{{ totalDay.totalQuantity }}</div>
+            <div class="reward-block__stat-views">{{ totalDay.totalViews }}</div>
+        </div>
+        <div class="reward-block__stat reward-block__stat--month">
+            <div class="reward-block__stat-quantity">{{ totalMonth.totalQuantity }}</div>
+            <div class="reward-block__stat-views">{{ totalMonth.totalViews }}</div>
+        </div>
+    </div>
+</div>

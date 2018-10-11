@@ -1,0 +1,19 @@
+@mixin social-icon($size: 20) {
+
+  $size: $size + px;
+
+  padding-left: 30px;
+  position: relative;
+  display: flex;
+
+  &::after {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    font-size: $size;
+    content: '';
+    @content;
+  }
+}

@@ -1,0 +1,5 @@
+name: 'DP Mistake'
+type: module
+description: 'Informing editors about mistakes'
+core: 8.x
+package: 'DonPress'

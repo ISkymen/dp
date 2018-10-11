@@ -1,0 +1,9 @@
+langcode: en
+status: false
+dependencies:
+  module:
+    - dp_news
+id: news.big_card
+label: 'Big card'
+targetEntityType: news
+cache: true
