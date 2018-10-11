@@ -32,4 +32,4 @@ docker-sync.yml
 traefik.yml
 
 # Db dump
-db
+/db/
