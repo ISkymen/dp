@@ -13,7 +13,7 @@ private
 
 
 # Ignore custom theme's source files.
-*/themes/*/src
+*/themes/custom/*/src
 
 .lando.yml
 acquia-pipelines.yml
