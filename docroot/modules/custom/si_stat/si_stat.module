@@ -1,0 +1,122 @@
+<?php
+
+/**
+ * @file
+ * Logs and displays content si_stat for a site.
+ */
+
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
+use Drupal\Core\Url;
+use Drupal\dp_news\Entity\newsInterface;
+use Drupal\si_stat\StatViewsResult;
+
+
+/**
+ * Implements hook_entity_view() for news entities.
+ */
+function si_stat_entity_view(array &$build, EntityInterface $entity, EntityViewDisplayInterface $display, $view_mode) {
+  //if (!$news->isNew() && $view_mode == 'full' && news_is_page($news) && empty($news->in_preview)) {
+  if (!$entity->isNew() && $view_mode == 'full' && empty($entity->in_preview)) {
+        $build['#attached']['library'][] = 'si_stat/drupal.si_stat';
+    //$settings = ['data' => ['nid' => $news->id()], 'url' => Url::fromUri('base:' . drupal_get_path('module', 'si_stat') . '/si_stat.php')->toString()];
+    $settings = ['data' => ['entity_type' => $entity->getEntityTypeId(), 'entity_id' => $entity->id()], 'url' => Url::fromUri('base:' . drupal_get_path('module', 'si_stat') . '/si_stat.php')->toString()];
+    $build['#attached']['drupalSettings']['si_stat'] = $settings;
+  }
+}
+
+/**
+ * Implements hook_entity_links_alter().
+ */
+function si_stat_entity_links_alter(array &$links, newsInterface $entity, array &$context) {
+  if ($context['view_mode'] != 'rss') {
+    $links['#cache']['contexts'][] = 'user.permissions';
+    if (\Drupal::currentUser()->hasPermission('view post access counter')) {
+      $si_stat = \Drupal::service('si_stat.storage.entity')->fetchView($entity->id());
+      if ($si_stat) {
+        $si_stat_links['si_stat_counter']['title'] = \Drupal::translation()->formatPlural($si_stat->getTotalCount(), '1 view', '@count views');
+        $links['si_stat'] = [
+          '#theme' => 'links__news__si_stat',
+          '#links' => $si_stat_links,
+          '#attributes' => ['class' => ['links', 'inline']],
+        ];
+      }
+      $links['#cache']['max-age'] = \Drupal::config('si_stat.settings')->get('display_max_age');
+    }
+  }
+}
+
+/**
+ * Implements hook_cron().
+ */
+function si_stat_cron() {
+  $storage = \Drupal::service('si_stat.storage.entity');
+  $storage->resetCount();
+//  $storage->resetDayCount();
+  $max_total_count = $storage->maxTotalCount();
+  \Drupal::state()->set('si_stat.si_stat_scale', 1.0 / max(1.0, $max_total_count));
+}
+
+/**
+ * Retrieves a news's "view si_stat".
+ *
+ * @deprecated in Drupal 8.2.x, will be removed before Drupal 9.0.0.
+ *   Use \Drupal::service('si_stat.storage.entity')->fetchView($id).
+ */
+function si_stat_get($id) {
+  if ($id > 0) {
+    /** @var \Drupal\si_stat\StatViewsResult $si_stat */
+    $si_stat = \Drupal::service('si_stat.storage.entity')->fetchView($id);
+
+    // For backwards compatibility, return FALSE if an invalid news ID was
+    // passed in.
+    if (!($si_stat instanceof StatViewsResult)) {
+      return FALSE;
+    }
+    return [
+      'totalcount' => $si_stat->getTotalCount(),
+      'yearcount' => $si_stat->getYearCount(),
+      'monthcount' => $si_stat->getMonthCount(),
+      'weekcount' => $si_stat->getWeekCount(),
+      'daycount' => $si_stat->getDayCount(),
+      'timestamp' => $si_stat->getTimestamp(),
+    ];
+  }
+}
+
+/**
+ * Implements hook_entity_predelete() for the entities.
+ */
+function si_stat_entity_predelete(EntityInterface $entity) {
+  // Clean up si_stat table when news is deleted.
+  $entity_type = $entity->getEntityTypeId();
+  $entity_id = $entity->id();
+  return \Drupal::service('si_stat.storage.entity')->deleteViews($entity_type, $entity_id);
+}
+
+/**
+ * Implements hook_ranking().
+ */
+function si_stat_ranking() {
+  if (\Drupal::config('si_stat.settings')->get('count_content_views')) {
+    return [
+      'views' => [
+        'title' => t('Number of views'),
+        'join' => [
+          'type' => 'LEFT',
+          'table' => 'si_stat',
+          'alias' => 'si_stat',
+          'on' => 'si_stat.nid = i.sid',
+        ],
+        // Inverse law that maps the highest view count on the site to 1 and 0
+        // to 0. Note that the ROUND here is necessary for PostgreSQL and SQLite
+        // in order to ensure that the :si_stat_scale argument is treated as
+        // a numeric type, because the PostgreSQL PDO driver sometimes puts
+        // values in as strings instead of numbers in complex expressions like
+        // this.
+        'score' => '2.0 - 2.0 / (1.0 + si_stat.totalcount * (ROUND(:si_stat_scale, 4)))',
+        'arguments' => [':si_stat_scale' => \Drupal::state()->get('si_stat.si_stat_scale') ?: 0],
+      ],
+    ];
+  }
+}

@@ -1,0 +1,231 @@
+<?php
+
+use Drupal\dp_news\Entity\News;
+use Drupal\node\Entity\Node;
+use Drupal\block\Entity\Block;
+use Drupal\si_stat\StatStorageInterface;
+use Drupal\taxonomy\Entity\Term;
+
+/**
+* Implements hook_preprocess().
+*/
+function dpt_preprocess(&$variables, $hook) {
+  $variables['base_path'] = base_path();
+  $variables['theme_path'] = drupal_get_path('theme', 'dpt');
+}
+
+function dpt_preprocess_page(&$variables) {
+
+  $config = \Drupal::config('system.site');
+  $custom_var = \Drupal::config('dp_vars.settings');
+  $variables['site_name'] = $config->get('name');
+  $variables['site_slogan'] = $config->get('slogan');
+  $variables['copyright'] = $custom_var->get('copyright');
+  $variables['counters'] = $custom_var->get('counters');
+  $variables['site_logo'] = theme_get_setting('logo.url');
+
+  if ($term = \Drupal::routeMatch()->getParameter('taxonomy_term')) {
+    $vid = $term->getVocabularyId();
+    if ($vid == 'topics') {
+      $config = \Drupal::config('dp_news.settings');
+      $fid = $config->get('news_image')[0];
+      if ($fid && $image =  \Drupal\file\Entity\File::load($fid)) {
+        $variables['dummy_image'] = "kk";
+      }
+    }
+  }
+
+  if ($news = \Drupal::routeMatch()->getParameter('news')) {
+    $variables['news'] = $news;
+  }
+  if ($node = \Drupal::routeMatch()->getParameter('node')) {
+    $variables['node'] = $node;
+  }
+  if (isset($news) && $news instanceof News) {
+    unset($variables['page']['content']['dpt_page_title']);
+  }
+  if (isset($node) && $node instanceof Node) {
+    $bundle = $node->bundle();
+    if ($bundle == 'article' || $bundle == 'blog' )
+    unset($variables['page']['content']['dpt_page_title']);
+  }
+}
+
+function dpt_add_regions_to_entity($allowed_regions, &$variables) {
+  // Retrieve active theme
+  $theme = \Drupal::theme()->getActiveTheme()->getName();
+
+  // Retrieve theme regions
+  $available_regions = system_region_list($theme);
+
+  // Validate allowed regions with available regions
+  $regions = array_intersect(array_keys($available_regions), $allowed_regions);
+
+  // For each region
+  foreach ($regions as $key => $region) {
+
+    // Load region blocks
+    $blocks = \Drupal::entityTypeManager()
+      ->getStorage('block')
+      ->loadByProperties(array('theme' => $theme, 'region' => $region));
+    // Sort ‘em
+    uasort($blocks, 'Drupal\block\Entity\Block::sort');
+
+    // Capture viewable blocks and their settings to $build
+    $build = array();
+    foreach ($blocks as $key => $block) {
+      if ($block->access('view')) {
+        $block = Block::load($key);
+        $block_content = \Drupal::entityTypeManager()
+          ->getViewBuilder('block')
+          ->view($block);
+        $build[$key] = $block_content;
+      }
+    }
+
+    // Add build to region
+    $variables[$region] = $build;
+  }
+}
+
+function dpt_preprocess_views_view_unformatted(&$variables){
+  $view = $variables["view"];
+  $allowed_views_id = ['news_feed'];
+  $id = $view->id();
+
+  if(in_array($id, $allowed_views_id)) {
+    // Allowed regions (for performance so as to not execute for unneeded region)
+    $allowed_regions = ['banner_in_feed'];
+    dpt_add_regions_to_entity($allowed_regions, $variables);
+  }
+
+  // An exception might be thrown.
+  try {
+    $variables['is_front'] = \Drupal::service('path.matcher')->isFrontPage();
+  }
+  catch (Exception $e) {
+    // If the database is not yet available, set the default value.
+    $variables['is_front'] = FALSE;
+  }
+}
+
+function dpt_preprocess_news(&$variables) {
+  $entity_type = $variables['news']->getEntityTypeId();
+  $entity_id = $variables['news']->id();
+  $variables['stat'] = \Drupal::service('si_stat.storage.entity')->fetchView($entity_type, $entity_id);
+  $variables['#cache']['max-age'] = 60;
+
+  // Allowed view modes
+  $view_mode = $variables['view_mode']; // Retrieve view mode
+  $allowed_view_modes = ['full']; // Array of allowed view modes (for performance so as to not execute on unneeded nodes)
+
+  // If view mode is in allowed view modes list, pass to THEME_add_regions_to_node()
+  if(in_array($view_mode, $allowed_view_modes)) {
+    // Allowed regions (for performance so as to not execute for unneeded region)
+    $allowed_regions = ['banner_content_header', 'banner_content'];
+    dpt_add_regions_to_entity($allowed_regions, $variables);
+  }
+
+}
+
+function dpt_preprocess_node(&$variables) {
+  $entity_type = $variables['node']->getEntityTypeId();
+  $entity_id = $variables['node']->id();
+  $variables['stat'] = \Drupal::service('si_stat.storage.entity')->fetchView($entity_type, $entity_id);
+}
+
+function dpt_preprocess_taxonomy_term(&$variables) {
+
+  if (($term = $variables['term']) && ($term instanceof Term)) {
+    $vid = $term->getVocabularyId();
+    if ($vid == 'topics') {
+      $config = \Drupal::config('dp_news.settings');
+      $fid = $config->get('news_image')[0];
+      if ($fid && $image =  \Drupal\file\Entity\File::load($fid)) {
+        $style_name = ($variables['view_mode'] == 'topic_views') ? 'mwd' : 'xlwd';
+
+        $dummy_image = array(
+          'style_name' => $style_name,
+          'uri' => $image->getFileUri(),
+        );
+
+        // The image.factory service will check if our image is valid.
+        $image = \Drupal::service('image.factory')->get($image->getFileUri());
+        if ($image->isValid()) {
+          $dummy_image['width'] = $image->getWidth();
+          $dummy_image['height'] = $image->getHeight();
+        }
+        else {
+          $dummy_image['width'] = $dummy_image['height'] = NULL;
+        }
+
+        $image_array = [
+          '#theme' => 'image_style',
+          '#width' => $dummy_image['width'],
+          '#height' => $dummy_image['height'],
+          '#style_name' => $dummy_image['style_name'],
+          '#uri' => $dummy_image['uri'],
+        ];
+
+        $variables['dummy_image'] = $image_array;
+      }
+    }
+  }
+}
+
+function dpt_theme_suggestions_container_alter(array &$suggestions, array $variables) {
+  if(!empty($variables["element"]["view_build"])) {
+    $suggestions[] = 'container__no_wrapper';
+  }
+}
+
+function dpt_theme_suggestions_taxonomy_term_alter(&$suggestions, $vars, $hook) {
+//  $suggestions[] = 'taxonomy_term__' . $vars['elements']['#view_mode'];
+     $term = $vars['elements']['#taxonomy_term'];
+     $sanitized_view_mode = strtr($vars['elements']['#view_mode'], '.', '_');
+
+     $suggestions[] = 'taxonomy_term__' . $sanitized_view_mode;
+     $suggestions[] = 'taxonomy_term__' . $term->bundle();
+     $suggestions[] = 'taxonomy_term__' . $term->bundle() . '__' . $sanitized_view_mode;
+     $suggestions[] = 'taxonomy_term__' . $term->id();
+     $suggestions[] = 'taxonomy_term__' . $term->id() . '__' . $sanitized_view_mode;
+
+
+}
+
+//function dpt_theme_suggestions_taxonomy_term(array &$suggestions, array $variables) {
+//
+//   /** @var \Drupal\taxonomy\TermInterface $term */
+//   $term = $variables['elements']['#taxonomy_term'];
+//   $sanitized_view_mode = strtr($variables['elements']['#view_mode'], '.', '_');
+//
+//   $suggestions[] = 'taxonomy_term__' . $sanitized_view_mode;
+//   $suggestions[] = 'taxonomy_term__' . $term->bundle();
+//   $suggestions[] = 'taxonomy_term__' . $term->bundle() . '__' . $sanitized_view_mode;
+//   $suggestions[] = 'taxonomy_term__' . $term->id();
+//   $suggestions[] = 'taxonomy_term__' . $term->id() . '__' . $sanitized_view_mode;
+//
+//return $suggestions;
+//}
+
+function dpt_preprocess_page_title(&$variables) {
+
+  if ($term = \Drupal::routeMatch()->getParameter('taxonomy_term')) {
+    $vid = $term->getVocabularyId();
+    $prefix = '';
+    $suffix = '';
+    if ($vid == 'tags') {
+      $prefix = t('Новости с тегом «');
+      $suffix = '»';
+      $variables['title'] = $prefix . $term->getName() . $suffix;
+    }
+    elseif ($vid == 'rubrics') {
+      $prefix = t('Новости в рубрике «');
+      $suffix = '»';
+      $variables['title'] = $prefix . $term->getName() . $suffix;
+    }
+    elseif ($vid == 'topics') {
+      unset($variables['title']);
+    }
+  }
+}

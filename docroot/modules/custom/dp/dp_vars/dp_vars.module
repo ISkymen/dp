@@ -1,0 +1,49 @@
+<?php
+/**
+ * @file
+ * Contains sky_head.module
+ *
+ * For code that can not be placed anywhere else, or just is part of our core
+ * code for Amvb.
+ */
+
+use Drupal\Core\Render\Markup;
+use Drupal\Component\Utility\Html;
+
+/**
+ * Implements hook_form_alter().
+ */
+function dp_vars_page_attachments(&$attachments) {
+
+  $config = \Drupal::config('dp_vars.settings');
+  $head = $config->get('head');
+
+  $script = [
+    '#type' => 'markup',
+    '#theme' => 'var_template',
+    '#config' => $head,
+  ];
+
+  $attachments['#attached']['html_head'][] = [
+    $script,
+    'dp-vars-head',
+    ];
+
+};
+
+function dp_vars_theme() {
+  return [
+    'var_template' => [
+      'variables' => array('config' => NULL),
+    ],
+  ];
+}
+
+function dp_vars_page_top(&$page_top) {
+  $config = \Drupal::config('dp_vars.settings');
+  $body = $config->get('body');
+  $page_top['dp_vars'] = [
+    '#theme' => 'var_template',
+    '#config' => $body,
+  ];
+}

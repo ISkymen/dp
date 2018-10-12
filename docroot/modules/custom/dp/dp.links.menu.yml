@@ -1,0 +1,6 @@
+dp.settings:
+  route_name: dp.settings
+  parent: system.admin_config
+  title: DonPress
+  description: 'Configure DonPress custom modules.'
+  weight: -100

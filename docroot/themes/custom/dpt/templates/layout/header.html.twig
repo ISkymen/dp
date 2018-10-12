@@ -1,0 +1,22 @@
+<header class="s-layout__header s-header" role="banner">
+  <div class="s-layout__header-inner s-header__content">
+    {% if page.header_branding %}
+      {{ page.header_branding }}
+    {% endif %}
+    {% if page.header_nav %}
+    <div class="s-amenu__container">
+      {{ page.header_nav }}
+    </div>
+    {% endif %}
+  </div>
+
+
+
+  {#<div class="s-header__banner s-banner__header">#}
+    {#<img src="/profiles/donpress/themes/dp/css/img/adsimage.jpg" alt="">#}
+  {#</div>#}
+  <div class="js-s-amenu__toggle s-amenu__toggle s-header__toggle"><span></span></div>
+
+</header>
+
+

@@ -1,0 +1,122 @@
+{#
+/**
+ * @file news.html.twig
+ * Default theme implementation to present News data.
+ *
+ * This template is used when viewing News pages.
+ *
+ *
+ * Available variables:
+ * - content: A list of content items. Use 'content' to print all content, or
+ * - attributes: HTML attributes for the container element.
+ *
+ * @see template_preprocess_news()
+ *
+ * @ingroup themeable
+ */
+#}
+
+{#{{ dump(content|keys) }}#}
+
+{%
+    set classes = [
+    'news',
+    not news.isPublished() ? 'news--unpublished',
+    view_mode ? 'news--' ~ view_mode|clean_class,
+]
+%}
+
+<div{{ attributes.addClass(classes) }}>
+  <div class="s-news-header">
+    <div class="s-news-header__banner">
+      {{ banner_content_header }}
+    </div>
+
+    <div class="s-card s-card--full">
+      <div class="s-card__image">
+        {{ content.image }}
+      </div>
+      <div class="s-card__overlay">
+        <div class="s-info-line s-info-line--light">
+          {% if content.photo['#items'] %}
+            <div class="s-info-line__element s-info-line__element--photo"></div>
+          {% endif %}
+          {% if content.field_news_video['#items'] %}
+            <div class="s-info-line__element s-info-line__element--video"></div>
+          {% endif %}
+          <div class="s-info-line__element s-info-line__element--date">
+            {{ news.created.value|date("d.m.Y") }}
+          </div>
+          <div class="s-info-line__element s-info-line__element--time">
+            {{ news.created.value|date("H:i") }}
+          </div>
+          {% if logged_in %}
+            <div class="s-user-line s-user-line--light s-info-line__element s-info-line__element--user">
+              {{ author_name }}
+              <a class="s-user-line__link" href="/user/{{ news.uid.value.0.target_id }}"></a>
+            </div>
+          {% endif %}
+          {% if stat.totalCount %}
+            <div class="s-info-line__element s-info-line__element--view">
+              {{ stat.totalCount }}
+            </div>
+          {% endif %}
+
+        </div>
+        <h1 class="s-card__label">
+          {{ label }}
+        </h1>
+        <div class="s-card__image-copyright">
+          {% if news.image.title %}
+            {{ news.image.title }}
+          {% else %}
+            {{ 'Иллюстративное фото из открытых источников' }} {# TODO #}
+          {% endif %}
+        </div>
+      </div>
+      {% if content.rubric %}
+        <div class="s-card__rubric">
+          {{ content.rubric }}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+
+    {% if news.topic.value %}
+  <div class="s-topic">
+
+      {{ content.topic }}
+
+  </div>
+    {% endif %}
+  <div class="s-news-content">
+    {% if facebook_debug %}
+      {{ facebook_debug }}
+    {% endif %}
+    {{ content.addtoany }}
+    {{ content.body }}
+    {{ banner_content }}
+      {% if content.photo['#items']  %}
+    <div class="s-photo">
+      {{ content.photo }}
+    </div>
+    {% endif %}
+      {% if content.field_news_video['#items']  %}
+    <div class="s-video">
+      {{ content.field_news_video }}
+    </div>
+    {% endif %}
+    <div class="s-tags">
+      {{ content.tags }}
+    </div>
+  </div>
+
+  {% if similar_news.content  %}
+    <div class="s-news__similar">
+      {{ similar_news.title }}
+      {{ similar_news.content }}
+    </div>
+  {% endif %}
+
+
+</div>

@@ -1,0 +1,4 @@
+administer si_stat:
+  title: 'Administer si_stat'
+view post access counter:
+  title: 'View content hits'

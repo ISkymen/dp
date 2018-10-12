@@ -1,0 +1,7 @@
+dp_vars.settings:
+  path: '/admin/config/dp/vars'
+  defaults:
+    _form: '\Drupal\dp_vars\Form\ConfigForm'
+    _title: 'DP variables'
+  requirements:
+    _permission: 'administer site configuration'

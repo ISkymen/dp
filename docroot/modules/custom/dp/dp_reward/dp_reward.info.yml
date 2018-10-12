@@ -1,0 +1,8 @@
+name: 'Donpress Reward'
+type: module
+description: 'Count reward for editors and owners'
+core: 8.x
+package: 'DonPress'
+configure: dp_reward.settings
+dependencies:
+  - block

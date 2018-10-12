@@ -1,0 +1,52 @@
+.s-user {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+  color: white;
+  //display: inline-block;
+  //vertical-align: middle;
+  //margin-right: 20px;
+  @include icon(account-circle, left, $fs-3, $c-3-L10);
+  padding-left: 25px;
+  width: 100%;
+
+  @include desktop {
+    width: auto;
+  }
+
+  &__image {
+    display: none;
+    @include desktop {
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 10px;
+      img {
+        border-radius: 50%;
+        height: auto;
+      }
+    }
+
+  }
+  &__name {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 0.8em;
+    //margin-right: 50px;
+    border-bottom: 1px solid transparent;
+    @include transition();
+  }
+  &__link {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    font-size: 0;
+  }
+  &:hover {
+    .s-user__name {
+      border-color: white;
+    }
+  }
+}

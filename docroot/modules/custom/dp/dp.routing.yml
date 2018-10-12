@@ -1,0 +1,7 @@
+dp.settings:
+  path: '/admin/config/dp'
+  defaults:
+    _controller: '\Drupal\system\Controller\SystemController::systemAdminMenuBlockPage'
+    _title: 'DonPress'
+  requirements:
+    _permission: 'access administration pages'

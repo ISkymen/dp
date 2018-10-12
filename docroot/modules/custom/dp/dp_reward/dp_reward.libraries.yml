@@ -1,0 +1,10 @@
+base:
+  version: "1.0"
+  css:
+    theme:
+      css/styles.css: {}
+  js:
+    js/scripts.js: {}
+  dependencies:
+    - core/jquery
+    - core/jquery.once

@@ -1,0 +1,5 @@
+dp_reward.settings:
+  title: 'DP Reward'
+  description: 'Configure DP reward'
+  parent: dp.settings
+  route_name: dp_reward.settings

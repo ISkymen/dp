@@ -1,0 +1,5 @@
+name: 'DP Common'
+type: module
+description: 'DP Common Module'
+core: 8.x
+package: 'DonPress'

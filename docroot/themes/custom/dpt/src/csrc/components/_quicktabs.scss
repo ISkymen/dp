@@ -1,0 +1,36 @@
+.quicktabs-wrapper {
+  .quicktabs-tabs {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    li {
+      flex: 1;
+      margin: 0;
+      padding: 0 10px;
+      background: rgba($c-blue-D1, 0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      @include transition();
+      &.active {
+        background: $c-blue-D1;
+      }
+      &:hover {
+        background: rgba($c-blue-D1, 0.9);
+      }
+      a {
+        display: block;
+        line-height: 2.25;
+        width: 100%;
+        font-size: 0.9em;
+        text-align: center;
+        text-decoration: none;
+        color: white;
+        @include x-wide {
+          font-size: 1em;
+        }
+      }
+    }
+  }
+}

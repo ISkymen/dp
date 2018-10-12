@@ -1,0 +1,17 @@
+services:
+  dp_reward.data:
+    class: Drupal\dp_reward\AggregateData
+    arguments: ['@database', '@dp_reward.money', '@dp_reward.profit.yandex', '@dp_reward.profit.adsense', '@dp_reward.profit.marketgid']
+  dp_reward.money:
+    class: Drupal\dp_reward\Money
+  dp_reward.google_auth:
+    class: Drupal\dp_reward\GoogleAuth
+  dp_reward.profit.yandex:
+    class: Drupal\dp_reward\ProfitYandex
+    arguments: ['@dp_reward.money']
+  dp_reward.profit.adsense:
+    class: Drupal\dp_reward\ProfitAdsense
+    arguments: ['@dp_reward.money']
+  dp_reward.profit.marketgid:
+    class: Drupal\dp_reward\ProfitMarketgid
+    arguments: ['@dp_reward.money']

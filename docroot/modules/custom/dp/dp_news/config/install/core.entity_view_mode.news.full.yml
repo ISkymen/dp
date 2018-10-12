@@ -1,0 +1,9 @@
+langcode: en
+status: false
+dependencies:
+  module:
+    - dp_news
+id: news.full
+label: 'Full content'
+targetEntityType: news
+cache: true

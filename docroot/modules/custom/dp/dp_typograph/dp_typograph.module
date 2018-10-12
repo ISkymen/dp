@@ -1,0 +1,94 @@
+<?php
+
+/**
+ * @file
+ * Contains dp_typograph.module.
+ */
+
+use Drupal\Component\Utility\Html;
+use Emuravjev\Mdash\Typograph;
+
+/**
+ * Implements hook_entity_presave().
+ *
+ * @param \Drupal\Core\Entity\EntityInterface $entity
+ */
+function dp_typograph_entity_presave(Drupal\Core\Entity\EntityInterface $entity) {
+  $typograph_settings = [
+    'Nobr.super_nbsp' => 'off',
+    'Nobr.nbsp_in_the_end' => 'off',
+    'Nobr.phone_builder' => 'off',
+    'Nobr.ip_address' => 'off',
+    'Nobr.spaces_nobr_in_surname_abbr' => 'off',
+    'Nobr.nbsp_celcius' => 'off',
+    'Nobr.hyphen_nowrap_in_small_words' => 'off',
+    'Nobr.hyphen_nowrap' => 'off',
+    'Nobr.nowrap' => 'off',
+    'Punctmark.dot_on_end' => 'off',
+    'OptAlign.oa_oquote' => 'off',
+    'OptAlign.oa_obracket_coma' => 'off',
+    'OptAlign.oa_oquote_extra' => 'off',
+    'Symbol.no_inches' => 'on',
+    'Text.auto_links' => 'off',
+    'Text.email' => 'off',
+    'Text.breakline' => 'off',
+  ];
+
+  if ($entity->getEntityTypeId() == 'news' || $entity->getEntityTypeId() == 'node') {
+    $title = $entity->get('title')->value;
+    $body_text = $entity->get('body')->value;
+    $body_format = $entity->get('body')->format;
+  }
+
+  /*
+   * Process Title.
+   */
+
+  // Replace 'ё' and 'Ё' letters in Title.
+  $title = str_replace("Ё", "Е", $title);
+  $title = str_replace("ё", "е", $title);
+
+  // Typograph Title.
+  $typograph = new Typograph();
+  $typograph->setup($typograph_settings);
+  $typograph->set_text($title);
+  $title = $typograph->apply();
+  $title = trim(strip_tags(Html::decodeEntities($title)));
+
+
+  if ($entity->getEntityTypeId() == 'news') {
+    $entity->set('title', $title);
+  }
+
+  else if ($entity->getEntityTypeId() == 'node') {
+    $entity->setTitle($title);
+  }
+
+
+  /*
+   * Process Body.
+   */
+  // Remove empty <p></p> tags from Body.
+  $body_text = preg_replace('/<p[^>]*>(&nbsp;|\s)*<\/p>/ui', '', $body_text);
+
+  // Replace 'ё' and 'Ё' letters in Body.
+  $body_text = str_replace("Ё", "Е", $body_text);
+  $body_text = str_replace("ё", "е", $body_text);
+
+  // Typograph Body.
+  $typograph = new Typograph();
+  $typograph->setup($typograph_settings);
+  $typograph->set_text($body_text);
+  $body_text = $typograph->apply();
+
+
+  if ($entity->getEntityTypeId() == 'news') {
+    $entity->set('body', ['value' => $body_text, 'format' => $body_format]);
+  }
+
+  else if ($entity->getEntityTypeId() == 'node') {
+    $entity->set('body', ['value' => $body_text, 'format' => $body_format]);
+  }
+
+  // TODO: Need to rewrok. ALL.
+}

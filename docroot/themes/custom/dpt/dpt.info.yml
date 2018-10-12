@@ -1,0 +1,37 @@
+name: Donpress
+description: Theme for donpress.com
+type: theme
+base theme: stable
+description: 'A flexible theme based on classy theme for the donpress.com website.'
+core: 8.x
+libraries:
+  - dpt/base
+
+#libraries-override:
+#  system/base:
+#    css:
+#      component:
+#        /core/modules/system/css/components/align.module.css: false
+
+regions:
+  header_branding: 'Header Branding'
+  header_nav: 'Header navigation'
+  header: 'Header'
+  breadcrumb: 'Breadcrumb'
+  help: Help
+  highlighted: 'Highlighted'
+  top: 'Page top'
+  front_top: 'Front News'
+  front_main: 'Front Articles'
+  front_bottom: 'Front Blogs'
+  content_top: 'Above content'
+  content: 'Content'
+  content_bottom: 'Under content'
+  banner_content: 'Banner content'
+  banner_content_header: 'Banner content header'
+  banner_in_feed: 'Banner In-feed'
+  sidebar_first: 'Sidebar first'
+  sidebar_second: 'Sidebar second'
+  bottom: 'Page bottom'
+  footer_first: 'Footer first'
+  footer_second: 'Footer second'

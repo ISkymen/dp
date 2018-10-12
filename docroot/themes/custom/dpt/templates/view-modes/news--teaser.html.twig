@@ -1,0 +1,47 @@
+{#
+/**
+ * @file news.html.twig
+ * Default theme implementation to present News data.
+ *
+ * This template is used when viewing News pages.
+ *
+ *
+ * Available variables:
+ * - content: A list of content items. Use 'content' to print all content, or
+ * - attributes: HTML attributes for the container element.
+ *
+ * @see template_preprocess_news()
+ *
+ * @ingroup themeable
+ */
+#}
+<div{{ attributes.addClass('s-teaser') }}>
+  <h2 class="s-teaser__label">
+    {{ label }}
+  </h2>
+  <div class="s-teaser__content">
+    <div class="s-teaser__image">
+      {{ content.image }}
+    </div>
+    <div class="s-teaser__info">
+
+      <div class="s-info-line">
+        <div class="s-info-line__element s-info-line__element--date">
+          {{ news.created.value|date("d.m.Y") }}
+        </div>
+        <div class="s-info-line__element s-info-line__element--time">
+          {{ news.created.value|date("H:i") }}
+        </div>
+        {% if stat.totalCount %}
+        <div class="s-info-line__element s-info-line__element--view">
+          {{ stat.totalCount }}
+        </div>
+        {% endif %}
+      </div>
+      <div class="s-teaser__body">
+        {{ content.body }}
+      </div>
+    </div>
+  </div>
+  <a href="{{ url }}" class="s-teaser__link"></a>
+</div>

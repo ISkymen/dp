@@ -1,0 +1,104 @@
+<?php
+
+/**
+ * @file
+ * Contains dp_stop_adsense.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\dp_news\Entity\News;
+use Drupal\taxonomy\Entity\Term;
+use Drupal\block\Entity\Block;
+
+/**
+ * Implements hook_help().
+ */
+function dp_stop_adsense_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the dp_stop_adsense module.
+    case 'help.page.dp_stop_adsense':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Stop AdSense block on certain pages') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+
+function dp_stop_adsense_theme_suggestions_block_alter(array &$suggestions, array $variables) {
+
+  if ($variables['elements']['#plugin_id'] == 'adsense_managed_ad_block') {
+    if (_dp_stop_adsense_ad_stop()) {
+      $suggestions[] = 'block__empty';
+    }
+  }
+}
+
+/**
+ * Implements hook_page_attachments_alter().
+ */
+function dp_stop_adsense_page_attachments_alter(array &$attachments) {
+
+  if (_dp_stop_adsense_ad_stop()) {
+    $index = array_search('adsense_managed_page_level', array_column($attachments['#attached']['html_head'], 1));
+    unset($attachments['#attached']['html_head'][$index]);
+  }
+}
+
+
+/**
+ * Implements hook_adsense_alter().
+ */
+function _dp_stop_adsense_ad_stop() {
+  $config = \Drupal::config('dp_stop_adsense.settings');
+
+  $stop_tags = $config->get('tags');
+  $stop_photo = $config->get('photo');
+  $stop_days = $config->get('days');
+
+  $parameters = \Drupal::routeMatch()->getParameters()->all();
+
+  if (($news = $parameters['news']) && ($news instanceof News)) {
+    $now = \Drupal::time()->getRequestTime();
+    $created = $news->getCreatedTime();
+    $news_days = round(($now - $created) / 86400);
+    $news_tags = array_column($news->get('tags')->getValue(), 'target_id');
+    $news_photo = $news->get('photo')->getValue();
+
+    if ($news_days >= $stop_days) {
+      if ($news_tags && $stop_tags && !empty(array_intersect($news_tags, $stop_tags))) {
+        if ($stop_photo) {
+          if ($news_photo) {
+            $stop_adsense = TRUE;
+          }
+          else {
+            $stop_adsense = FALSE;
+          }
+        }
+        else {
+          $stop_adsense = TRUE;
+        }
+      }
+      else {
+        $stop_adsense = FALSE;
+      }
+    }
+    else {
+      $stop_adsense = FALSE;
+    }
+  }
+
+  if (($term = $parameters['taxonomy_term']) && ($term instanceof Term)) {
+    if ($stop_tags && in_array($term->id(), $stop_tags)) {
+      $stop_adsense = TRUE;
+    }
+    else {
+      $stop_adsense = FALSE;
+    }
+  }
+
+  return $stop_adsense;
+}
+

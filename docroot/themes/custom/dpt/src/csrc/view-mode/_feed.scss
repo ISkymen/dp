@@ -1,0 +1,26 @@
+.s-feed {
+  display: flex;
+  align-items: baseline;
+  margin: 5px 0;
+  padding: 5px 15px;
+
+  &__info {
+    flex: 0;
+    padding-right: 10px;
+  }
+
+  &__label {
+    margin: 0;
+    flex: 1;
+    font-size: 0.9em;
+    font-weight: inherit;
+    @include x-wide {
+      //font-size: 1em;
+    }
+  }
+
+  &--hot {
+    //font-weight: bold;
+    background: $c-orange-L2;
+  }
+}

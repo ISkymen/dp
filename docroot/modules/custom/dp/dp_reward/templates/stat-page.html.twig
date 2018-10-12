@@ -1,0 +1,71 @@
+{% set currency = ' грн.' %}
+
+<h1>{{ stat.eur }}</h1>
+<h1>{{ stat.rub }}</h1>
+<h1>{{ stat.yandex }}</h1>
+<h1>{{ stat.adsense }}</h1>
+<h1>{{ stat.db }}</h1>
+
+
+<div class="reward">
+
+  <div class="reward-info-user">
+
+    <table class="reward-table">
+
+      <thead>
+      <tr class="reward-table__row">
+        <th class="reward-table__header">{{ 'Редактор' }} </th>
+        <th class="reward-table__header">{{ 'Кол-во материалов за период' }} </th>
+        <th class="reward-table__header">{{ 'Среднее кол-во материалов в день' }} </th>
+        <th class="reward-table__header">{{ 'Кол-во просмотров за период' }} </th>
+        <th class="reward-table__header">{{ 'Среднее кол-во просмотров одного материала' }} </th>
+        <th class="reward-table__header">{{ 'Заработано за кол-во материалов' }} </th>
+        <th class="reward-table__header">{{ 'Заработано за кол-во просмотров' }} </th>
+        <th class="reward-table__header">{{ 'Заработано всего за период' }} </th>
+      </tr>
+      </thead>
+
+      <tfoot>
+      <tr>
+        <th class="reward-table__data">{{ 'Все редакторы' }}</th>
+        <th class="reward-table__data">{{ common.quantity }}</th>
+        <th class="reward-table__data">{{ common.averageQuantity|e }}</th>
+        <th class="reward-table__data">{{ common.views }}</th>
+        <th class="reward-table__data">{{ common.averageViews|e }}</th>
+        <th class="reward-table__data">{{ common.rewardQuantity }}</th>
+        <th class="reward-table__data">{{ common.rewardViews }}</th>
+        <th class="reward-table__data">{{ common.rewardEditors }}</th>
+      </tr>
+      </tfoot>
+
+      <tbody>
+      {% for user in users %}
+        <tr class="reward-table__row">
+          <td class="reward-table__data">{{ user.name|e }}</td>
+          <td class="reward-table__data">{{ user.quantity|e }}</td>
+          <td class="reward-table__data">{{ user.averageQuantity|e }}</td>
+          <td class="reward-table__data">{{ user.views|e }}</td>
+          <td class="reward-table__data">{{ user.averageViews|e }}</td>
+          <td class="reward-table__data">{{ user.rewardQuantity|e }}</td>
+          <td class="reward-table__data">{{ user.rewardViews|e }}</td>
+          <td class="reward-table__data">{{ user.rewardTotal|e }}</td>
+        </tr>
+      {% endfor %}
+      </tbody>
+
+    </table>
+
+  </div>
+
+  {% if service.owner %}
+    <div class="reward-info-service">
+      <p>Общий доход: {{ profit.total_uah }} грн. (Adsense - {{ profit.source.adsense.profit }} евро, РСЯ - {{ profit.source.yandex.profit }} руб., MarketGid - {{ profit.source.marketgid.profit }} долл.)</p>
+      <p>Доход на одного владельца: {{ service.rewardOwner }}грн.</p>
+      <p>Курсы валют: Евро - {{ profit.source.adsense.exchange_rate }}, Рубль - {{ profit.source.yandex.exchange_rate }}</p>
+      <p>Выполнено за время (грубо): {{ service.runtime }} сек.</p>
+    </div>
+  {% endif %}
+
+</div>
+

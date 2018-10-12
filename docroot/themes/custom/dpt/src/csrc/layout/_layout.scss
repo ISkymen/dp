@@ -1,0 +1,67 @@
+.s-layout {
+  &__header {
+    &-inner {
+
+    }
+  }
+  &__page {
+    //padding-top: 15px;
+    @include desktop {
+      @include site-width;
+      padding-top: 15px;
+    }
+    @include x-wide {
+      padding-top: 30px;
+    }
+    &-top {
+
+    }
+    &-main {
+      @include desktop {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        .block {
+          margin-bottom: 20px;
+        }
+      }
+
+    }
+    &-bottom {
+      @include pad;
+      @include desktop {
+        padding: 0;
+      }
+    }
+    &-content {
+      @include pad;
+      padding-top: 15px;
+      .path-news & {
+        padding: 0;
+        @include tablet {
+          background: none;
+        }
+      }
+      @include desktop {
+        padding: 0;
+        width: 65.5%;
+      }
+    }
+    &-sidebar {
+      @include tablet {
+        @include pad;
+      }
+      @include desktop {
+        width: 33%;
+        padding: 0;
+      }
+    }
+  }
+  &__footer {
+    &-inner {
+      @include site-width;
+      padding-top: 20px;
+      padding-bottom: 10px;
+    }
+  }
+}

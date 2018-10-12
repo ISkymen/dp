@@ -1,0 +1,7 @@
+dp_rss_zen.rss_zen:
+  path: '/rss/zen'
+  defaults:
+    _controller: '\Drupal\dp_rss\Controller\RssController::rss_generate'
+    destination: 'zen'
+  requirements:
+    _permission: 'access content'

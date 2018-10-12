@@ -1,0 +1,7 @@
+name: DP RSS
+type: module
+description: RSS feeds for DonPress.
+core: 8.x
+package: DonPress
+dependencies:
+  - dp_news

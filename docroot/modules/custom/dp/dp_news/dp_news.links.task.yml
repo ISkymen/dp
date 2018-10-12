@@ -1,0 +1,22 @@
+# News routing definition
+dp_news.settings_tab:
+  route_name: dp_news.settings
+  title: 'Settings'
+  base_route: dp_news.settings
+
+entity.news.canonical:
+  route_name: entity.news.canonical
+  base_route: entity.news.canonical
+  title: 'View'
+
+entity.news.edit_form:
+  route_name: entity.news.edit_form
+  base_route: entity.news.canonical
+  title: 'Edit'
+
+entity.news.delete_form:
+  route_name:  entity.news.delete_form
+  base_route:  entity.news.canonical
+  title: Delete
+  weight: 10
+

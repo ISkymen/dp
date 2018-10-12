@@ -1,0 +1,153 @@
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    .profit-table {
+      border-spacing: 0;
+      border-collapse: collapse;
+      font-size: 1em;
+      width: 100%; }
+    @media (min-width: 960px) {
+      .profit-table {
+        width: auto; } }
+    .profit-table__header {
+      padding: 5px;
+      border: 1px solid #0B81E7;
+      font-size: 0.8em;
+      background: rgba(244, 126, 24, 0.15); }
+    .profit-table__data {
+      border: 1px solid #0B81E7;
+      text-align: right;
+      padding: 2px 5px; }
+    @media (min-width: 960px) {
+      .profit-table__data {
+        padding: 5px 10px; } }
+    .profit-table__data--source, .profit-table__data--total {
+      padding: 0; }
+    .profit-table__data--today {
+      background: #e4f2fe; }
+    .profit-table__data--month {
+      background: #fffbf8; }
+    .profit-table tfoot .profit-table__data--today, .profit-table thead .profit-table__data--today {
+      background: #c2e1fc; }
+    .profit-table tfoot .profit-table__data--month, .profit-table thead .profit-table__data--month {
+      background: #fdebdb; }
+    .profit-table__row--profit .profit-table__data {
+      width: 50%; }
+    .profit-table__wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      text-align: right; }
+    .profit-table__source {
+      background: #0b81e7;
+      color: #ffffff;
+      text-transform: capitalize;
+      text-align: center; }
+    .profit-table__total {
+      background: #064b86;
+      color: #ffffff;
+      text-transform: capitalize;
+      text-align: center; }
+    .profit-table__more {
+      font-size: 0.8em;
+      margin-right: 10px; }
+    .profit {
+      padding: 10px;
+      font-family: "Open Sans";
+    }
+  </style>
+</head>
+
+
+<div class="profit">
+
+    <table class="profit-table">
+
+      <thead>
+      <tr class="profit-table__row">
+        <th class="profit-table__header  profit-table__data--today">{{ 'Доход за сегодня, грн' }} </th>
+        <th class="profit-table__header  profit-table__data--month">{{ 'Доход за месяц, грн' }} </th>
+      </tr>
+      </thead>
+
+      <tfoot>
+      <tr>
+        <th class="profit-table__data  profit-table__data--today">{{ profit.today_total_uah|e }}</th>
+        <th class="profit-table__data  profit-table__data--month">{{ profit.month_total_uah|e }}</th>
+      </tr>
+      </tfoot>
+
+      <tbody>
+      {% for source in profit.sources %}
+
+        <tr class="profit-table__row">
+          <td colspan="2" class="profit-table__data profit-table__data--source">
+          <div class="profit-table__source">
+            {{ source.source|e }}
+          </div>
+          </td>
+        </tr>
+        <tr class="profit-table__row profit-table__row--profit">
+          <td class="profit-table__data profit-table__data--today">
+
+            <div class="profit-table__wrapper">
+
+              <div class="profit-table__more">
+
+                <div class="profit-table__profit">
+                  {{ source.today_profit|e }} {{ source.currency|e }}
+                </div>
+
+                <div class="profit-table__percent">
+                  {{ source.today_percent|e }} %
+                </div>
+
+              </div>
+
+
+              <div class="profit-table__uah">
+                {{ source.today_profit_uah|e }}
+              </div>
+
+            </div>
+          </td>
+          <td class="profit-table__data profit-table__data--month">
+            <div class="profit-table__wrapper">
+
+
+              <div class="profit-table__more">
+
+                <div class="profit-table__profit">
+                  {{ source.month_profit|e }} {{ source.currency|e }}
+                </div>
+
+                <div class="profit-table__percent">
+                  {{ source.month_percent|e }} %
+                </div>
+
+              </div>
+
+              <div class="profit-table__uah">
+                {{ source.month_profit_uah|e }}
+              </div>
+            </div>
+          </td>
+        </tr>
+      {% endfor %}
+      <tr class="profit-table__row">
+        <td colspan="2" class="profit-table__data profit-table__data--total">
+          <div class="profit-table__total">
+            Всего
+          </div>
+        </td>
+      </tr>
+      </tbody>
+
+    </table>
+    <p>
+      Время обновления: {{ profit.profit_date|date("d.m.Y H:i") }}
+    </p>
+
+</div>
+

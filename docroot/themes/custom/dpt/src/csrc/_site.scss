@@ -1,0 +1,60 @@
+.s-site {
+  display: flex;
+  align-items: center;
+  font-size: 1em;
+  @include desktop {
+    font-size: 2em;
+  }
+  .s-footer & {
+    font-size: 1.5em;
+  }
+
+  &__logo {
+    //display: none;
+    margin-right: 10px;
+    img {
+      display: block;
+      height: 1.6em;
+      width: auto;
+    }
+  }
+  &__info {
+
+  }
+  &__name {
+    font-family: $ff-2;
+    font-size: 2em;
+    line-height: 1;
+    //font-weight: bold;
+    text-decoration: none;
+    color: #0B81E7;
+    display: inline-block;
+    vertical-align: middle;
+    @include desktop {
+      display: block;
+      font-size: 1.3em;
+    }
+  }
+  &__slogan {
+    display: none;
+    @include tablet {
+      display: inline-block;
+      vertical-align: middle;
+      margin-left: 20px;
+      line-height: 1.3;
+      font-size: 1em;
+      color: $c-gray-L1;
+      @include desktop {
+        display: block;
+        margin-left: 0;
+        font-size: 0.43em;
+      }
+    }
+
+  }
+}
+
+.region-header {
+  @include site-width;
+  display: flex;
+}

@@ -1,0 +1,5 @@
+dp_vars.settings:
+  title: 'DP Vars'
+  description: 'Setup common variables for DonPress'
+  parent: dp.settings
+  route_name: dp_vars.settings

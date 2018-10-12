@@ -1451,6 +1451,7 @@ return array(
     'DrupalComposer\\DrupalScaffold\\Plugin' => $vendorDir . '/drupal-composer/drupal-scaffold/src/Plugin.php',
     'DrupalComposer\\DrupalScaffold\\PrestissimoFileFetcher' => $vendorDir . '/drupal-composer/drupal-scaffold/src/PrestissimoFileFetcher.php',
     'DrupalFinder\\DrupalFinder' => $vendorDir . '/webflo/drupal-finder/src/DrupalFinder.php',
+    'DrupalProject\\composer\\ScriptHandler' => $baseDir . '/scripts/composer/ScriptHandler.php',
     'Drupal\\Component\\Annotation\\AnnotationBase' => $baseDir . '/docroot/core/lib/Drupal/Component/Annotation/AnnotationBase.php',
     'Drupal\\Component\\Annotation\\AnnotationInterface' => $baseDir . '/docroot/core/lib/Drupal/Component/Annotation/AnnotationInterface.php',
     'Drupal\\Component\\Annotation\\Plugin' => $baseDir . '/docroot/core/lib/Drupal/Component/Annotation/Plugin.php',

@@ -1,0 +1,91 @@
+<div class="profit">
+
+    <table class="profit-table">
+
+        <thead>
+        <tr class="profit-table__row">
+            <th class="profit-table__header  profit-table__data--today">{{ 'Доход за сегодня, грн' }} </th>
+            <th class="profit-table__header  profit-table__data--month">{{ 'Доход за месяц, грн' }} </th>
+        </tr>
+        </thead>
+
+        <tfoot>
+        <tr>
+            <th class="profit-table__data  profit-table__data--today">{{ profit.today_total_uah|e }}</th>
+            <th class="profit-table__data  profit-table__data--month">{{ profit.month_total_uah|e }}</th>
+        </tr>
+        </tfoot>
+
+        <tbody>
+        {% for key, source in profit.source %}
+
+            <tr class="profit-table__row">
+                <td colspan="2" class="profit-table__data profit-table__data--source">
+                    <div class="profit-table__source">
+                      {{ key|e }}
+                    </div>
+                </td>
+            </tr>
+            <tr class="profit-table__row profit-table__row--profit">
+                <td class="profit-table__data profit-table__data--today">
+
+                    <div class="profit-table__wrapper">
+
+                        <div class="profit-table__more">
+
+                            <div class="profit-table__profit">
+                              {{ source.today_profit|e }} {{ source.currency|e }}
+                            </div>
+
+                            <div class="profit-table__percent">
+                              {{ source.today_percent|e }} %
+                            </div>
+
+                        </div>
+
+
+                        <div class="profit-table__uah">
+                          {{ source.today_profit_uah|e }}
+                        </div>
+
+                    </div>
+                </td>
+                <td class="profit-table__data profit-table__data--month">
+                    <div class="profit-table__wrapper">
+
+
+                        <div class="profit-table__more">
+
+                            <div class="profit-table__profit">
+                              {{ source.month_profit|e }} {{ source.currency|e }}
+                            </div>
+
+                            <div class="profit-table__percent">
+                              {{ source.month_percent|e }} %
+                            </div>
+
+                        </div>
+
+                        <div class="profit-table__uah">
+                          {{ source.month_profit_uah|e }}
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        {% endfor %}
+        <tr class="profit-table__row">
+            <td colspan="2" class="profit-table__data profit-table__data--total">
+                <div class="profit-table__total">
+                    Всего
+                </div>
+            </td>
+        </tr>
+        </tbody>
+
+    </table>
+    <p>
+        Время получения данных: {{ profit.profit_date }}
+    </p>
+
+</div>
+

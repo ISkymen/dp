@@ -1,0 +1,32 @@
+.s-page {
+  @include tablet {
+
+  }
+  @include desktop {
+    padding-top: 30px;
+  }
+
+  &__main {
+
+  }
+
+
+  &__bottom {
+    @include site-width;
+  }
+}
+//
+//.region-front, .region-bottom {
+//  padding: 0 10px;
+//  @include tablet {
+//    padding: 0;
+//  }
+//}
+
+#block-dpt-content {
+  margin: 0 0 20px;
+  //margin: 0 -10px 20px;
+  //@include tablet {
+  //  margin: 0 0 20px;
+  //}
+}

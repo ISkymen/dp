@@ -1,0 +1,217 @@
+<?php
+
+/**
+ * @file
+ * Contains dp_news.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Render\Element;
+use Drupal\Core\Url;
+use Drupal\dp_news\Entity\NewsInterface;
+use Drupal\Core\Template\Attribute;
+use Drupal\dp_news\Entity\News;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\views\Plugin\views\query\QueryPluginBase;
+use Drupal\views\ViewExecutable;
+use Drupal\Core\Link;
+
+/**
+ * Implements hook_help().
+ */
+function dp_news_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the dp_news module.
+    case 'help.page.dp_news':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('News for Donpress.com') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function dp_news_theme() {
+  return [
+    'news' => [
+      'render element' => 'elements',
+    ],
+    'news_form' => [
+      'render element' => 'form',
+    ],
+  ];
+}
+
+
+
+/**
+ * Checks whether the current page is the full page view of the passed-in news.
+ *
+ * @param \Drupal\dp_news\Entity\NewsInterface $news
+ *   A news entity.
+ *
+ * @return int|false
+ *   The ID of the news if this is a full page view, otherwise FALSE.
+ */
+function news_is_page(NewsInterface $news) {
+  $route_match = \Drupal::routeMatch();
+  if ($route_match->getRouteName() == 'entity.news.canonical') {
+    $page_news = $route_match->getParameter('news');
+  }
+  return (!empty($page_news) ? $page_news->id() == $news->id() : FALSE);
+}
+
+
+/**
+ * Prepares variables for news templates.
+ *
+ * Default template: news.html.twig.
+ *
+ * Most themes use their own copy of news.html.twig. The default is located
+ * inside "/modules/custom/dp_news/templates/news.html.twig". Look in there for the
+ * full list of variables.
+ *
+ * @param array $variables
+ *   An associative array containing:
+ *   - elements: An array of elements to display in view mode.
+ *   - news: The news object.
+ *   - view_mode: View mode; e.g., 'full', 'teaser', etc.
+ */
+function template_preprocess_news(&$variables) {
+  $variables['view_mode'] = $variables['elements']['#view_mode'];
+  // Provide a distinct $teaser boolean.
+  $variables['teaser'] = $variables['view_mode'] == 'teaser';
+  $variables['news'] = $variables['elements']['#news'];
+  /** @var \Drupal\dp_news\Entity\NewsInterface $news */
+  $news = $variables['news'];
+  $variables['date'] = \Drupal::service('renderer')->render($variables['elements']['created']);
+  unset($variables['elements']['created']);
+  $variables['author_name'] = \Drupal::service('renderer')->render($variables['elements']['uid']);
+  unset($variables['elements']['uid']);
+
+  $variables['url'] = $news->url('canonical');
+  $variables['label'] = $variables['elements']['title'];
+  unset($variables['elements']['title']);
+  // The 'page' variable is set to TRUE in two occasions:
+  //   - The view mode is 'full' and we are on the 'news.view' route.
+  //   - The news is in preview and view mode is either 'full' or 'default'.
+  $variables['page'] = ($variables['view_mode'] == 'full' && (news_is_page($news)) || (isset($news->in_preview) && in_array($news->preview_view_mode, ['full', 'default'])));
+
+  // Helpful $content variable for templates.
+  $variables += ['content' => []];
+  foreach (Element::children($variables['elements']) as $key) {
+    $variables['content'][$key] = $variables['elements'][$key];
+  }
+
+  // Add article ARIA role.
+  $variables['attributes']['role'] = 'article';
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK().
+ *
+ * Adds news template suggestions per view mode.
+ */
+function dp_news_theme_suggestions_news(array $variables) {
+  $suggestions = [];
+
+  /** @var news $news */
+  $news = $variables['elements']['#news'];
+  $sanitized_view_mode = strtr($variables['elements']['#view_mode'], '.', '_');
+
+  $suggestions[] = 'news__' . $sanitized_view_mode;
+  $suggestions[] = 'news__' . $news->id();
+  $suggestions[] = 'news__' . $news->id() . '__' . $sanitized_view_mode;
+
+  return $suggestions;
+}
+
+/**
+ * Implements hook_cron().
+ */
+
+function dp_news_cron() {
+    $result = FALSE;
+
+    $request_time = \Drupal::time()->getRequestTime();
+
+    $query = \Drupal::entityQuery('news')
+        ->condition('status', 0)
+        ->condition('created', $request_time, '<=');
+
+    $query->accessCheck(FALSE);
+    $ids = $query->execute();
+
+    $news_array = News::loadMultiple($ids);
+
+    foreach ($news_array as $news) {
+        $news ->setPublished(TRUE);
+        $news->save();
+        $result = TRUE;
+    }
+    return $result;
+}
+
+
+function dp_news_preprocess_news(&$variables) {
+
+
+  // Allowed view modes
+  $view_mode = $variables['view_mode']; // Retrieve view mode
+  $allowed_view_modes = ['full']; // Array of allowed view modes (for performance so as to not execute on unneeded nodes)
+
+  // If view mode is in allowed view modes list, pass to THEME_add_regions_to_node()
+  if(in_array($view_mode, $allowed_view_modes)) {
+    $entity_id = $variables['news']->id();
+    $tags = $variables['news']->get('tags')->getValue();
+    if ($tags) {
+      $similar_ids = \Drupal::service('dp_news.data')->getSimilarNews($entity_id, 4);
+      if ($similar_ids || !empty($similar_ids)) {
+        $view = \Drupal\views\Views::getView('news_similar');
+        $view->setDisplay('similar');
+        $view->setArguments($similar_ids);
+
+        $title_value = $view->getTitle();
+        $title = [
+          '#type' => 'html_tag',
+          '#tag' => 'h2',
+          '#value' => t($title_value),
+          '#attributes' => ['class' => ['block__title']],
+        ];
+
+        $similar_ids = implode(',',$similar_ids);
+        $variables['similar_news']['content'] = (!empty($similar_ids))
+          ? views_embed_view('news_similar', 'similar', $similar_ids)
+          : "";
+
+        $variables['similar_news']['title'] = $title;
+      }
+    }
+    $current_user = \Drupal::currentUser();
+    $roles = $current_user->getRoles();
+    if (in_array('administrator', $roles) || in_array('editor', $roles)) {
+      $entity_url = $variables['news']->toUrl()->setAbsolute()->toString();
+      $facebook_debug_url = Url::fromUri('https://developers.facebook.com/tools/debug/sharing/?q=' . $entity_url, array('attributes' => array('target' => '_blank', 'class' => 'facebook-debug')));
+      $facebook_debug = Link::fromTextAndUrl(t('Facebook debug'), $facebook_debug_url);
+      $variables['facebook_debug'] = $facebook_debug->toRenderable();
+    }
+  }
+}
+
+function dp_news_news_presave($news) {
+  $now = \Drupal::time()->getRequestTime();
+  if ($news->created->value > $now+60) {
+    $news->status->value = 0;
+  }
+  else {
+    $news->status->value = 1;
+  }
+}
+
+function dp_news_views_rss_channel_elements_alter(&$elements) {
+//  $elements['views_rss_core']['image'] = array();
+}

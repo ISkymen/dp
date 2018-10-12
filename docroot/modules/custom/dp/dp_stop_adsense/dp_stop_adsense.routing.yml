@@ -1,0 +1,7 @@
+dp_stop_adsense.settings:
+  path: '/admin/config/dp/stop_adsense'
+  defaults:
+    _form: '\Drupal\dp_stop_adsense\Form\ConfigForm'
+    _title: 'DP Stop AdSense'
+  requirements:
+    _permission: 'administer site configuration'

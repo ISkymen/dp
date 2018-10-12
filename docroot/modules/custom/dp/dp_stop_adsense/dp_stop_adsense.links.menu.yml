@@ -1,0 +1,5 @@
+dp_stop_adsense.settings:
+  title: 'DP Stop AdSense'
+  description: 'Remove AdSense blocks on certain pages'
+  parent: dp.settings
+  route_name: dp_stop_adsense.settings

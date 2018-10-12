@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitba31606ca5e6fc01a757793c9e85caca
+class ComposerStaticInit1885ef98da188c138c88387e5ccb793e
 {
     public static $files = array (
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
@@ -2268,6 +2268,7 @@ class ComposerStaticInitba31606ca5e6fc01a757793c9e85caca
         'DrupalComposer\\DrupalScaffold\\Plugin' => __DIR__ . '/..' . '/drupal-composer/drupal-scaffold/src/Plugin.php',
         'DrupalComposer\\DrupalScaffold\\PrestissimoFileFetcher' => __DIR__ . '/..' . '/drupal-composer/drupal-scaffold/src/PrestissimoFileFetcher.php',
         'DrupalFinder\\DrupalFinder' => __DIR__ . '/..' . '/webflo/drupal-finder/src/DrupalFinder.php',
+        'DrupalProject\\composer\\ScriptHandler' => __DIR__ . '/../..' . '/scripts/composer/ScriptHandler.php',
         'Drupal\\Component\\Annotation\\AnnotationBase' => __DIR__ . '/../..' . '/docroot/core/lib/Drupal/Component/Annotation/AnnotationBase.php',
         'Drupal\\Component\\Annotation\\AnnotationInterface' => __DIR__ . '/../..' . '/docroot/core/lib/Drupal/Component/Annotation/AnnotationInterface.php',
         'Drupal\\Component\\Annotation\\Plugin' => __DIR__ . '/../..' . '/docroot/core/lib/Drupal/Component/Annotation/Plugin.php',
@@ -16623,10 +16624,10 @@ class ComposerStaticInitba31606ca5e6fc01a757793c9e85caca
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitba31606ca5e6fc01a757793c9e85caca::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitba31606ca5e6fc01a757793c9e85caca::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInitba31606ca5e6fc01a757793c9e85caca::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInitba31606ca5e6fc01a757793c9e85caca::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit1885ef98da188c138c88387e5ccb793e::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit1885ef98da188c138c88387e5ccb793e::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit1885ef98da188c138c88387e5ccb793e::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit1885ef98da188c138c88387e5ccb793e::$classMap;
 
         }, null, ClassLoader::class);
     }

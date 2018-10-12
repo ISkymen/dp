@@ -1,0 +1,10 @@
+name: DP Vars
+type: module
+description: Variables for DonPress.
+core: 8.x
+package: DonPress
+
+configure: dp_vars.settings
+
+dependencies:
+  - block

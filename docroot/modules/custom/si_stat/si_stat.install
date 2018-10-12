@@ -1,0 +1,89 @@
+<?php
+
+/**
+ * @file
+ * Install and update functions for the si_stat module.
+ */
+
+/**
+ * Implements hook_uninstall().
+ */
+function si_stat_uninstall() {
+  // Remove states.
+  \Drupal::state()->delete('si_stat.si_stat_scale');
+  \Drupal::state()->delete('si_stat.day_timestamp');
+}
+
+/**
+ * Implements hook_schema().
+ */
+function si_stat_schema() {
+  $schema['si_stat'] = [
+    'description' => 'Access si_stat for entities.',
+    'fields' => [
+      'entity_type' => [
+        'description' => 'The entity type for these si_stat.',
+        'type' => 'varchar',
+        'not null' => FALSE,
+        'default' => '',
+        'length' => 50,
+      ],
+      'entity_id' => [
+        'description' => 'The entity id for these si_stat.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ],
+      'totalcount' => [
+        'description' => 'The total number of times the entity has been viewed.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ],
+      'yearcount' => [
+        'description' => 'The total number of times the entity has been viewed this year.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+        'size' => 'medium',
+      ],
+      'monthcount' => [
+        'description' => 'The total number of times the entity has been viewed this month.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+        'size' => 'medium',
+      ],
+      'weekcount' => [
+        'description' => 'The total number of times the entity has been viewed this week.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+        'size' => 'medium',
+      ],
+      'daycount' => [
+        'description' => 'The total number of times the entity has been viewed today.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+        'size' => 'medium',
+      ],
+      'timestamp' => [
+        'description' => 'The most recent time the entity has been viewed.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ],
+    ],
+    'primary key' => ['entity_type', 'entity_id'],
+  ];
+
+  return $schema;
+}

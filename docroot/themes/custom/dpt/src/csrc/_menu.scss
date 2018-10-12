@@ -1,0 +1,148 @@
+.s-amenu {
+  &__toggle {
+
+    $height: 10px;
+    $width: 30px;
+
+    width: $width;
+    padding: $height 0;
+
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    z-index: 2000;
+    @include transition();
+    @include tablet {
+      right: 20px;
+    }
+
+    @include desktop {
+      display: none;
+    }
+
+    span, span:before, span:after {
+      height: 4px;
+      width: inherit;
+      background: $c-blue;
+      display: block;
+      content: '';
+      @include transition();
+    }
+
+    span {
+      &:before {
+        position: absolute;
+        top: 0;
+      }
+      &:after {
+        position: absolute;
+        top: $height*2;
+      }
+    }
+
+    .js-amenu & { // ----- OPEN -----
+      span {
+        background: transparent;
+        &:before {
+          background: $c-orange;
+          top: $height;
+          transform: rotate(45deg);
+        }
+        &:after {
+          background: $c-orange;
+          top: $height;
+          transform: rotate(-45deg);
+        }
+      }
+    }
+  }
+
+  &__container {
+    margin-bottom: -60px;
+    position: fixed;
+    top: 42px;
+    bottom: 0;
+    left: -100%;
+    right: 100%;
+    z-index: 1000;
+    display: block;
+    box-sizing: border-box;
+    padding: 20px;
+    background-image: linear-gradient(rgb(41,149,223) 0%, rgb(16,110,174) 100%);
+    @include transition();
+    @include desktop {
+      transition: none;
+      padding: 0;
+      margin-bottom: 0;
+      position: static;
+      width: 100%;
+      display: flex;
+      flex: 1;
+      justify-content: flex-end;
+      background: none;
+    }
+
+    .js-amenu & {
+      left: 0;
+      right: 0;
+      overflow: auto;
+
+      @include desktop {
+        position: static;
+        background: none;
+      }
+    }
+
+
+    .region-menu {
+      border-bottom: 1px solid $color-1;
+      padding-bottom: 40px;
+      margin-bottom: 40px;
+      display: flex;
+      order: 1;
+      @include desktop {
+        border: none;
+        padding-bottom: 0;
+        margin-bottom: 0;
+        order: 1;
+      }
+    }
+
+    #block-system-main-menu {
+      @include desktop {
+        width: 80%;
+      }
+      .menu{
+
+        @include desktop {
+          display: flex;
+          background: url("img/background_blue.png");
+          justify-content: space-around;
+          background-size: cover;
+        }
+
+        li {
+          text-align: center;
+          list-style: none;
+          a {
+
+            &:hover {
+              border-bottom: 1px solid $color-2;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+body {
+  margin-top: 42px;
+  @include desktop {
+    margin-top: 0;
+  }
+}
+.js-amenu {
+  overflow: hidden;
+}

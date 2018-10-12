@@ -1,0 +1,46 @@
+{#
+/**
+ * @file news.html.twig
+ * Default theme implementation to present News data.
+ *
+ * This template is used when viewing News pages.
+ *
+ *
+ * Available variables:
+ * - content: A list of content items. Use 'content' to print all content, or
+ * - attributes: HTML attributes for the container element.
+ *
+ * @see template_preprocess_news()
+ *
+ * @ingroup themeable
+ */
+#}
+
+{%
+  set classes = [
+  'news',
+  view_mode ? 'news--' ~ view_mode|clean_class,
+  's-card',
+  's-card--small',
+]
+%}
+
+<div{{ attributes.addClass(classes) }}>
+  <div class="s-card__image">
+    {{ content.image }}
+    <div class="s-card__overlay">
+      <div class="s-info-line s-info-line--light">
+        <div class="s-info-line__element s-info-line__element--date">
+          {{ news.created.value|date("d.m.Y") }}
+        </div>
+        {% if stat.totalCount %}
+          <div class="s-info-line__element s-info-line__element--view">
+            {{ stat.totalCount }}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  <div class="s-card__title">{{ label }}</div>
+  <a href="{{ url }}" class="s-card__link">{{ label }}</a>
+</div>

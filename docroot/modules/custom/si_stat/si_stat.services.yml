@@ -1,0 +1,6 @@
+services:
+  si_stat.storage.entity:
+    class: Drupal\si_stat\StatStorage
+    arguments: ['@database', '@state', '@request_stack']
+    tags:
+      - { name: backend_overridable }
