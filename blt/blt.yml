@@ -10,7 +10,7 @@ project:
 git:
   default_branch: develop
   remotes:
-    stage: 'git@github.com:ISkymen/dp_build.git'
+    stage: 'git@github.com:ISkymen/dp_dev.git'
 deploy:
   tag_source: true
   dir: '${repo.root}/blt/deploy'
