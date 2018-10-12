@@ -1,7 +1,0 @@
-@mixin block-debug($debug: $debug_state) {
-  @if $debug_state {
-    background: rgba(255,255,255,0.5);
-    outline: 1px solid orange;
-  }
-}
-
