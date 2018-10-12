@@ -1,0 +1,89 @@
+uuid: 05eee7f8-437c-488f-8688-d793f3456943
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.news.card_medium
+    - field.field.news.news.field_news_video
+  module:
+    - blazy
+    - dp_news
+id: news.news.card_medium
+targetEntityType: news
+bundle: news
+mode: card_medium
+content:
+  image:
+    label: hidden
+    type: blazy
+    weight: 0
+    region: content
+    settings:
+      image_style: msq
+      thumbnail_style: ''
+      media_switch: ''
+      ratio: '1:1'
+      sizes: ''
+      breakpoints:
+        xs:
+          image_style: ''
+          width: ''
+          breakpoint: ''
+        sm:
+          image_style: ''
+          width: ''
+          breakpoint: ''
+        md:
+          image_style: ''
+          width: ''
+          breakpoint: ''
+        lg:
+          image_style: ''
+          width: ''
+          breakpoint: ''
+        xl:
+          image_style: ''
+          width: ''
+          breakpoint: ''
+      current_view_mode: card_medium
+      background: false
+      caption:
+        title: '0'
+        alt: '0'
+      iframe_lazy: true
+      icon: ''
+      layout: ''
+      view_mode: ''
+      cache: 0
+      optionset: default
+      skin: ''
+      style: ''
+      box_caption: ''
+      box_caption_custom: ''
+      box_style: ''
+      box_media_style: ''
+      responsive_image_style: ''
+      grid: 0
+      grid_header: ''
+      grid_medium: 0
+      grid_small: 0
+    third_party_settings: {  }
+  title:
+    label: hidden
+    type: string
+    weight: 1
+    region: content
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+hidden:
+  addtoany: true
+  body: true
+  field_news_video: true
+  langcode: true
+  photo: true
+  rss: true
+  rubric: true
+  tags: true
+  topic: true
+  uid: true

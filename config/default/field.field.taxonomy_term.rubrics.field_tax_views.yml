@@ -1,0 +1,23 @@
+uuid: 8f91785a-ed25-4738-9aa7-c8cad5c62a02
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_tax_views
+    - taxonomy.vocabulary.rubrics
+id: taxonomy_term.rubrics.field_tax_views
+field_name: field_tax_views
+entity_type: taxonomy_term
+bundle: rubrics
+label: Views
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:view'
+  handler_settings:
+    target_bundles: null
+    auto_create: false
+field_type: entity_reference

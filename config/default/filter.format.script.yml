@@ -1,0 +1,8 @@
+uuid: b125f3fe-1efb-4974-81d8-c5fd84b97a75
+langcode: en
+status: true
+dependencies: {  }
+name: Script
+format: script
+weight: 0
+filters: {  }

@@ -1,0 +1,17 @@
+uuid: 49f559cc-d7ff-4151-a557-7e13fb33f451
+langcode: en
+status: true
+dependencies:
+  module:
+    - si_stat
+title: 'Default cron handler'
+id: si_stat_cron
+weight: 0
+module: si_stat
+callback: si_stat_cron
+scheduler:
+  id: simple
+launcher:
+  id: serial
+logger:
+  id: database

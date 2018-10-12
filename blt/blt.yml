@@ -1,0 +1,39 @@
+project:
+  machine_name: dp
+  prefix: BLT
+  human_name: 'DP BLT'
+  profile:
+    name: standard
+  local:
+    protocol: http
+    hostname: '${project.machine_name}.dev.loc'
+git:
+  default_branch: develop
+  remotes:
+    stage: 'git@github.com:ISkymen/dp_build.git'
+deploy:
+  tag_source: true
+  dir: '${repo.root}/blt/deploy'
+  gitignore_file: '${repo.root}/blt/.gitignore'
+drush:
+  aliases:
+    remote: '${project.machine_name}.test'
+    local: self
+    ci: self
+  default_alias: '${drush.aliases.local}'
+modules:
+  local:
+    enable: [dblog, devel, seckit, views_ui, stage_file_proxy]
+    uninstall: [acquia_connector, shield]
+  ci:
+    enable: {  }
+    uninstall: [acquia_connector, shield]
+  dev:
+    enable: [acquia_connector, shield]
+    uninstall: {  }
+  test:
+    enable: [acquia_connector, shield]
+    uninstall: [devel, views_ui, stage_file_proxy]
+  prod:
+    enable: [acquia_connector, shield]
+    uninstall: [devel, views_ui, stage_file_proxy]

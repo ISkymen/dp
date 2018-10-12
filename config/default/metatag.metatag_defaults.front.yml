@@ -1,0 +1,13 @@
+uuid: 55f936d7-780d-4d3c-aa0c-2af735245dcf
+langcode: ru
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: 1noCXlegCr5HFehQRF1ViXy1jhU1jZ_sNN99a8Sj5jo
+id: front
+label: 'Главная страница'
+tags:
+  canonical_url: '[site:url]'
+  title: DonPress.com
+  shortlink: '[site:url]'
+  og_url: '[site:url]'

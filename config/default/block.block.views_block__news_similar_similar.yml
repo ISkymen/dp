@@ -1,0 +1,31 @@
+uuid: b478cce8-35be-477b-8d0e-4f944c782790
+langcode: en
+status: false
+dependencies:
+  config:
+    - views.view.news_similar
+  module:
+    - system
+    - views
+  theme:
+    - dp
+id: views_block__news_similar_similar
+theme: dp
+region: content
+weight: -9
+provider: null
+plugin: 'views_block:news_similar-similar'
+settings:
+  id: 'views_block:news_similar-similar'
+  label: ''
+  provider: views
+  label_display: visible
+  views_label: ''
+  items_per_page: none
+  context_mapping: {  }
+visibility:
+  request_path:
+    id: request_path
+    pages: '/news/*'
+    negate: true
+    context_mapping: {  }

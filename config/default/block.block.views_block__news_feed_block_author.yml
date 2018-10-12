@@ -1,0 +1,40 @@
+uuid: 2a4a96a9-f82d-4ebb-9faa-eded1a9c07ae
+langcode: ru
+status: true
+dependencies:
+  config:
+    - views.view.news_feed
+  module:
+    - system
+    - user
+    - views
+  theme:
+    - dp
+id: views_block__news_feed_block_author
+theme: dp
+region: content
+weight: -10
+provider: null
+plugin: 'views_block:news_feed-block_author'
+settings:
+  id: 'views_block:news_feed-block_author'
+  label: ''
+  provider: views
+  label_display: visible
+  views_label: ''
+  items_per_page: none
+  context_mapping: {  }
+visibility:
+  request_path:
+    id: request_path
+    pages: '/user/*'
+    negate: false
+    context_mapping: {  }
+  user_role:
+    id: user_role
+    roles:
+      administrator: administrator
+      editor: editor
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'

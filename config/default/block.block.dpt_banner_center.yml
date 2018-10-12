@@ -1,0 +1,27 @@
+uuid: 1db825d2-316c-4557-87b0-f38b5c202ad1
+langcode: en
+status: true
+dependencies:
+  module:
+    - adsense
+  theme:
+    - dpt
+id: dpt_banner_center
+theme: dpt
+region: front_top
+weight: -13
+provider: null
+plugin: adsense_managed_ad_block
+settings:
+  id: adsense_managed_ad_block
+  label: 'Banner center'
+  provider: adsense
+  label_display: '0'
+  ad_slot: '3685009526'
+  ad_format: responsive
+  ad_width: 250
+  ad_height: 250
+  ad_shape:
+    auto: auto
+  ad_align: ''
+visibility: {  }

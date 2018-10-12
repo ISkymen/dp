@@ -1,0 +1,26 @@
+uuid: 21b12cc5-4c82-4633-8cb0-3dd12d916cca
+langcode: en
+status: true
+dependencies:
+  module:
+    - dp_vars
+    - system
+  theme:
+    - dpt
+id: topics
+theme: dpt
+region: sidebar_first
+weight: -15
+provider: null
+plugin: dp_block_topics
+settings:
+  id: dp_block_topics
+  label: Сюжеты
+  provider: dp_vars
+  label_display: visible
+visibility:
+  request_path:
+    id: request_path
+    pages: '<front>'
+    negate: false
+    context_mapping: {  }

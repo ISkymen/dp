@@ -1,0 +1,13 @@
+uuid: 6a58141b-c97e-4e65-b777-4362eae8dc6d
+langcode: en
+status: true
+dependencies: {  }
+id: news
+label: News
+tags:
+  description: '[news:summary-short]'
+  image_src: '[news:image]'
+  og_description: '[news:summary-short]'
+  og_image: '[news:image]'
+  twitter_cards_image: '[news:image]'
+  twitter_cards_description: '[news:summary-short]'

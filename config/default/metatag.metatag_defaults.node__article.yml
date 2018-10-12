@@ -1,0 +1,7 @@
+uuid: 9f1f27a3-140a-44fb-af33-2e8c1f2c44cc
+langcode: ru
+status: true
+dependencies: {  }
+id: node__article
+label: 'Содержимое: Статья'
+tags: {  }

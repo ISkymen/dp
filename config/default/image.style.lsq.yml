@@ -1,0 +1,15 @@
+uuid: c4938ab2-7a39-4f58-949d-93e39f253970
+langcode: en
+status: true
+dependencies: {  }
+name: lsq
+label: 'Lsq (680x680)'
+effects:
+  8243be9d-146b-46c0-9aa9-28370dbc7172:
+    uuid: 8243be9d-146b-46c0-9aa9-28370dbc7172
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 680
+      height: 680
+      anchor: center-center

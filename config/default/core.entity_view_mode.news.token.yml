@@ -1,0 +1,10 @@
+uuid: 84ad4058-2709-4bed-add7-0dda52145d5f
+langcode: en
+status: true
+dependencies:
+  module:
+    - dp_news
+id: news.token
+label: Token
+targetEntityType: news
+cache: true

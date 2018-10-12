@@ -1,0 +1,10 @@
+uuid: 2a26f124-cef2-4ac6-ba9f-852733e88284
+langcode: en
+status: true
+dependencies:
+  module:
+    - dp_news
+id: news.card_large
+label: 'Card Large'
+targetEntityType: news
+cache: true

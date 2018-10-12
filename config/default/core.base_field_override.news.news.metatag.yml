@@ -1,0 +1,18 @@
+uuid: e7391e55-7452-4173-ab5b-fde353ad45d0
+langcode: ru
+status: true
+dependencies:
+  module:
+    - dp_news
+id: news.news.metatag
+field_name: metatag
+entity_type: news
+bundle: news
+label: Metatags
+description: 'The meta tags for the entity.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: map

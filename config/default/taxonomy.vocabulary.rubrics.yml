@@ -1,0 +1,9 @@
+uuid: ddc7995e-d435-4758-89d4-36ef43e07e35
+langcode: und
+status: true
+dependencies: {  }
+name: Rubrics
+vid: rubrics
+description: ''
+hierarchy: 0
+weight: 0

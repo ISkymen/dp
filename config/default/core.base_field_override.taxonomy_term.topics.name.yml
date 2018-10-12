@@ -1,0 +1,18 @@
+uuid: 0e0a8cba-02c0-45de-913c-6d7a0897f7ad
+langcode: ru
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.topics
+id: taxonomy_term.topics.name
+field_name: name
+entity_type: taxonomy_term
+bundle: topics
+label: Name
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

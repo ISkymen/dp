@@ -1,0 +1,27 @@
+uuid: 1462f980-ae3b-4e39-b5e7-908c83952ca5
+langcode: en
+status: true
+dependencies:
+  module:
+    - adsense
+  theme:
+    - dp
+id: banner_front
+theme: dp
+region: front_main
+weight: 0
+provider: null
+plugin: adsense_managed_ad_block
+settings:
+  id: adsense_managed_ad_block
+  label: 'Banner front'
+  provider: adsense
+  label_display: '0'
+  ad_slot: '3685009526'
+  ad_format: responsive
+  ad_width: 250
+  ad_height: 250
+  ad_shape:
+    auto: auto
+  ad_align: ''
+visibility: {  }

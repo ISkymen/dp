@@ -1,0 +1,33 @@
+uuid: c9615476-95dc-4289-b268-5097db8ed46c
+langcode: en
+status: true
+dependencies:
+  module:
+    - adsense
+    - system
+  theme:
+    - dp
+id: banner_sidebar_top
+theme: dp
+region: sidebar_first
+weight: -12
+provider: null
+plugin: adsense_managed_ad_block
+settings:
+  id: adsense_managed_ad_block
+  label: 'Banner sidebar top'
+  provider: adsense
+  label_display: '0'
+  ad_slot: '7857037526'
+  ad_format: responsive
+  ad_width: 250
+  ad_height: 250
+  ad_shape:
+    vertical: vertical
+  ad_align: center
+visibility:
+  request_path:
+    id: request_path
+    pages: '<front>'
+    negate: true
+    context_mapping: {  }

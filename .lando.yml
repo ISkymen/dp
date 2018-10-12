@@ -18,9 +18,7 @@ services:
   appserver:
     build:
       - "cd $LANDO_MOUNT && composer install"
-      # - "cd $LANDO_WEBROOT && drush sql-cli < ../db/db.sql && drush cr -y"
-    # run:
-
+      
   node:
     type: node:8.9
     overrides:
@@ -48,9 +46,9 @@ tooling:
     cmd: /app/vendor/bin/drupal
 
   # Define `lando blt` command
-  # blt:
-  #   service: appserver
-  #   cmd: /app/vendor/bin/blt
+  blt:
+    service: appserver
+    cmd: /app/vendor/bin/blt
 
   npm:
     service: node

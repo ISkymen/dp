@@ -1,0 +1,10 @@
+uuid: e8298dce-42f3-44aa-8059-07a537aae596
+langcode: en
+status: true
+dependencies:
+  module:
+    - taxonomy
+id: taxonomy_term.views_field
+label: 'Views field'
+targetEntityType: taxonomy_term
+cache: true

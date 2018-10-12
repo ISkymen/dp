@@ -1,0 +1,15 @@
+uuid: 8e0591ee-b642-4b7e-a53a-4f0e3d507408
+langcode: en
+status: true
+dependencies: {  }
+name: xssq
+label: 'XSsq (50x50)'
+effects:
+  8fd887d3-c9ab-45fe-a111-fa55626051aa:
+    uuid: 8fd887d3-c9ab-45fe-a111-fa55626051aa
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 50
+      height: 50
+      anchor: center-center

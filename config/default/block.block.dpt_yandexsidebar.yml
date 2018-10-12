@@ -1,0 +1,33 @@
+uuid: 72401514-ce11-4e6f-bc33-1efc8d601118
+langcode: ru
+status: false
+dependencies:
+  content:
+    - 'block_content:basic:fdaff3eb-f18d-4b95-8ae6-bfafe84e71d2'
+  module:
+    - block_content
+    - user
+  theme:
+    - dpt
+id: dpt_yandexsidebar
+theme: dpt
+region: sidebar_second
+weight: 0
+provider: null
+plugin: 'block_content:fdaff3eb-f18d-4b95-8ae6-bfafe84e71d2'
+settings:
+  id: 'block_content:fdaff3eb-f18d-4b95-8ae6-bfafe84e71d2'
+  label: 'Yandex sidebar'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  user_role:
+    id: user_role
+    roles:
+      anonymous: anonymous
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'

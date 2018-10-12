@@ -33,3 +33,11 @@ traefik.yml
 
 # Db dump
 /db/
+
+
+# BLT Deploy folder
+/blt/deploy
+
+# Front tools
+/fronttools/node_modules
+/fronttools/package-lock.json

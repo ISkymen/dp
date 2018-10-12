@@ -1,0 +1,10 @@
+uuid: 99746fc3-1dcd-4c73-9f50-870572ad6ed7
+langcode: en
+status: true
+dependencies:
+  module:
+    - dp_news
+id: news.feed_top
+label: 'Feed Top'
+targetEntityType: news
+cache: true
