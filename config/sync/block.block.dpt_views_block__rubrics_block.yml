@@ -1,0 +1,30 @@
+uuid: 7dc075eb-4713-47a4-83f0-5ec958917593
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.rubrics
+  module:
+    - system
+    - views
+  theme:
+    - dpt
+id: dpt_views_block__rubrics_block
+theme: dpt
+region: bottom
+weight: 0
+provider: null
+plugin: 'views_block:rubrics-block'
+settings:
+  id: 'views_block:rubrics-block'
+  label: ''
+  provider: views
+  label_display: visible
+  views_label: ''
+  items_per_page: none
+visibility:
+  request_path:
+    id: request_path
+    pages: '<front>'
+    negate: false
+    context_mapping: {  }

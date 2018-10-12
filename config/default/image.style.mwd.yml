@@ -1,0 +1,15 @@
+uuid: 9228b759-e99a-4aeb-a07a-8e4aba364f44
+langcode: en
+status: true
+dependencies: {  }
+name: mwd
+label: 'Mwd (400x225)'
+effects:
+  2b4a9678-3866-4f4d-83d1-dec4199cf504:
+    uuid: 2b4a9678-3866-4f4d-83d1-dec4199cf504
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 400
+      height: 225
+      anchor: center-center

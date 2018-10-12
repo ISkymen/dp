@@ -1,0 +1,30 @@
+uuid: 4b459495-175f-4cf3-83f9-8b37556b5b50
+langcode: en
+status: false
+dependencies:
+  config:
+    - views.view.rubrics
+  module:
+    - system
+    - views
+  theme:
+    - dpt
+id: dpt_views_block__rubrics_block_2
+theme: dpt
+region: content_bottom
+weight: -16
+provider: null
+plugin: 'views_block:rubrics-block'
+settings:
+  id: 'views_block:rubrics-block'
+  label: ''
+  provider: views
+  label_display: visible
+  views_label: ''
+  items_per_page: none
+visibility:
+  request_path:
+    id: request_path
+    pages: '/news/*'
+    negate: false
+    context_mapping: {  }

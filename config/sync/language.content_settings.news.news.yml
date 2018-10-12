@@ -1,0 +1,17 @@
+uuid: d4a7eb82-a157-4a36-9738-b26355078a3c
+langcode: ru
+status: true
+dependencies:
+  module:
+    - content_translation
+    - dp_news
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: news.news
+target_entity_type_id: news
+target_bundle: news
+default_langcode: site_default
+language_alterable: false

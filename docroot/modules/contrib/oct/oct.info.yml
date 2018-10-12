@@ -1,0 +1,10 @@
+name: 'Old Cyrillic Transliteration'
+type: module
+description: 'Drupal 7 transliteration rules for Drupal 8 (cyrillic, currently supports only Russian and Ukrainian)'
+# core: 8.x
+
+# Information added by Drupal.org packaging script on 2018-03-19
+version: '8.x-1.0-alpha2'
+core: '8.x'
+project: 'oct'
+datestamp: 1521470299

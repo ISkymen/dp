@@ -1,0 +1,39 @@
+uuid: 049e8786-431b-48c3-9585-32ee7035c858
+langcode: ru
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:dd17faa0-9ff5-41d4-8697-adae43f9f732'
+  module:
+    - block_content
+    - system
+    - user
+  theme:
+    - dpt
+id: lentainform
+theme: dpt
+region: content_bottom
+weight: -18
+provider: null
+plugin: 'block_content:dd17faa0-9ff5-41d4-8697-adae43f9f732'
+settings:
+  id: 'block_content:dd17faa0-9ff5-41d4-8697-adae43f9f732'
+  label: 'Новости партнеров'
+  provider: block_content
+  label_display: visible
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: '/news/*'
+    negate: false
+    context_mapping: {  }
+  user_role:
+    id: user_role
+    roles:
+      anonymous: anonymous
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'

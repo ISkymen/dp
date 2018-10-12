@@ -1,0 +1,8 @@
+uuid: c93bf656-a4d2-41b2-9e63-d25f8598d1c8
+langcode: ru
+status: true
+dependencies: {  }
+id: social
+label: Social
+description: ''
+locked: false

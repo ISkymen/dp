@@ -1,0 +1,14 @@
+uuid: acde88b5-8bc3-46a4-bf55-c338a8b45ecf
+langcode: en
+status: true
+dependencies:
+  module:
+    - dp_news
+id: news
+label: News
+type: 'canonical_entities:news'
+pattern: 'news/[news:created:custom:d-m-Y]-[news:title]'
+selection_criteria: {  }
+selection_logic: and
+weight: -10
+relationships: {  }

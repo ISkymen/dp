@@ -1,0 +1,49 @@
+uuid: bcabd774-ea5f-4d94-a806-251973f6f833
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.rubrics.field_tax_views
+    - taxonomy.vocabulary.rubrics
+    - views.view.news_teaser
+  module:
+    - text
+    - views_field_formatter
+id: taxonomy_term.rubrics.default
+targetEntityType: taxonomy_term
+bundle: rubrics
+mode: default
+content:
+  description:
+    label: hidden
+    type: text_default
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_tax_views:
+    weight: 1
+    label: hidden
+    settings:
+      view: 'news_teaser::block_2'
+      arguments:
+        entity_id:
+          checked: '1'
+          weight: '0'
+        field_value:
+          weight: '0'
+          checked: 0
+        delta:
+          weight: '0'
+          checked: 0
+        entity_revision_id:
+          weight: '0'
+          checked: 0
+      implode_character: ''
+      hide_empty: 0
+      multiple: 0
+    third_party_settings: {  }
+    type: views_field_formatter
+    region: content
+hidden:
+  langcode: true

@@ -1,0 +1,24 @@
+uuid: 93b35f7b-9423-402c-90ea-d09f48a6c40e
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.news_block
+  module:
+    - views
+  theme:
+    - dpt
+id: dpt_views_block__news_block_top
+theme: dpt
+region: front_top
+weight: -14
+provider: null
+plugin: 'views_block:news_block-top'
+settings:
+  id: 'views_block:news_block-top'
+  label: ''
+  provider: views
+  label_display: visible
+  views_label: ''
+  items_per_page: none
+visibility: {  }

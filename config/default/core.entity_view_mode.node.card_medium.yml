@@ -1,0 +1,10 @@
+uuid: b092781e-432b-48b4-b5bd-d1f88f2d2345
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.card_medium
+label: 'Card Medium'
+targetEntityType: node
+cache: true

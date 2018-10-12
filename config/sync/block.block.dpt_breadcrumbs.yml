@@ -1,0 +1,22 @@
+uuid: ab299d7d-6f23-4e0c-9261-f366192b35ce
+langcode: en
+status: false
+dependencies:
+  module:
+    - system
+  theme:
+    - dpt
+_core:
+  default_config_hash: oXUb3JZR2WW5VOdw4HrhRicCsq51mCgLfRyvheG68ck
+id: dpt_breadcrumbs
+theme: dpt
+region: breadcrumb
+weight: 0
+provider: null
+plugin: system_breadcrumb_block
+settings:
+  id: system_breadcrumb_block
+  label: Breadcrumbs
+  provider: system
+  label_display: '0'
+visibility: {  }

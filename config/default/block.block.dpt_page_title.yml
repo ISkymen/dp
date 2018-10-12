@@ -1,0 +1,20 @@
+uuid: 1bc97997-5ad0-4756-ba5e-6b7e0c814946
+langcode: en
+status: true
+dependencies:
+  theme:
+    - dpt
+_core:
+  default_config_hash: 7rR9chwXvdM2H8OYMAYx9Zj3GGlPMrZp_M3ZA4thYTk
+id: dpt_page_title
+theme: dpt
+region: content
+weight: -20
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: 'Page title'
+  provider: core
+  label_display: '0'
+visibility: {  }

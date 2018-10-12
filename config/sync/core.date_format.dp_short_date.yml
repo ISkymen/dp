@@ -1,0 +1,8 @@
+uuid: 2dd6ed61-873f-4248-ae15-ec30cfb564a1
+langcode: en
+status: true
+dependencies: {  }
+id: dp_short_date
+label: 'DP short date'
+locked: false
+pattern: d.m.Y

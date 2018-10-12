@@ -1,0 +1,23 @@
+uuid: f1f20e25-4192-4c54-b9e2-ab36f5522139
+langcode: en
+status: true
+dependencies: {  }
+id: editor
+label: Editor
+weight: 3
+is_admin: null
+permissions:
+  - 'add news entities'
+  - 'create article content'
+  - 'create blog content'
+  - 'delete news entities'
+  - 'delete own article content'
+  - 'delete own blog content'
+  - 'edit any article content'
+  - 'edit any blog content'
+  - 'edit news entities'
+  - 'edit own article content'
+  - 'edit own blog content'
+  - 'hide adsense'
+  - 'view own unpublished content'
+  - 'view unpublished news entities'

@@ -1,0 +1,18 @@
+uuid: ef7d6f2d-33ba-4c25-a6a0-fa16bf8cd619
+langcode: ru
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.rubrics
+id: taxonomy_term.rubrics.name
+field_name: name
+entity_type: taxonomy_term
+bundle: rubrics
+label: Name
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

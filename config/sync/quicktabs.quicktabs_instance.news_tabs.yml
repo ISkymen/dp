@@ -1,0 +1,63 @@
+uuid: 9d6750cc-2b3c-483e-a9f2-188fdecd9e9e
+langcode: ru
+status: true
+dependencies: {  }
+id: news_tabs
+label: 'News Tabs'
+renderer: quick_tabs
+options:
+  quick_tabs:
+    ajax: '1'
+  accordion_tabs:
+    jquery_ui:
+      collapsible: 0
+      heightStyle: auto
+hide_empty_tabs: 0
+default_tab: '0'
+configuration_data:
+  -
+    title: 'Последние новости'
+    weight: '0'
+    type: block_content
+    content:
+      view_content:
+        options:
+          vid: article_block
+          display: default
+          args: ''
+      node_content:
+        options:
+          nid: ''
+          view_mode: full
+          hide_title: '1'
+      block_content:
+        options:
+          bid: 'views_block:news_feed-last'
+          block_title: ''
+          display_title: 0
+      qtabs_content:
+        options:
+          machine_name: ''
+  -
+    title: 'Топ за сутки'
+    weight: '0'
+    type: block_content
+    content:
+      view_content:
+        options:
+          vid: article_block
+          display: default
+          args: ''
+      node_content:
+        options:
+          nid: ''
+          view_mode: full
+          hide_title: '1'
+      block_content:
+        options:
+          bid: 'views_block:news_feed-top'
+          block_title: ''
+          display_title: 0
+      qtabs_content:
+        options:
+          machine_name: ''

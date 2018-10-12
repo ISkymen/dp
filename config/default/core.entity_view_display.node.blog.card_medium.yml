@@ -1,0 +1,42 @@
+uuid: be74d6fc-4c39-4814-ac21-2cdba81f633c
+langcode: en
+status: false
+dependencies:
+  config:
+    - core.entity_view_mode.node.card_medium
+    - field.field.node.blog.body
+    - field.field.node.blog.field_image
+    - node.type.blog
+  module:
+    - image
+    - text
+    - user
+id: node.blog.card_medium
+targetEntityType: node
+bundle: blog
+mode: card_medium
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_image:
+    weight: 102
+    label: above
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+    region: content
+  links:
+    weight: 100
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  addtoany: true
+  langcode: true

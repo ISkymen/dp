@@ -1,0 +1,10 @@
+admin_css: false
+responsive_image: false
+one_pixel: false
+blazy:
+  loadInvisible: false
+  offset: 300
+  saveViewportOffsetDelay: 50
+_core:
+  default_config_hash: qSffC70ODbv0BehNMS_7K1sO34OogvBsnphKkBeV5W8
+langcode: ru

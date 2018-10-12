@@ -1,0 +1,8 @@
+uuid: 35997b7d-c664-4424-a3d1-fb6d8cfb11dd
+langcode: und
+status: true
+dependencies: {  }
+id: dp_full_date
+label: 'DP Full Date'
+locked: false
+pattern: 'j F Y, l'

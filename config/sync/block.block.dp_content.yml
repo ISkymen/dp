@@ -1,0 +1,27 @@
+uuid: 6e1452e2-aabe-4de1-8308-dc401de0c0da
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - dp
+_core:
+  default_config_hash: 9EoWV2Lot6FVSr50t4hoKgiz1LIXYWNG-IIPYsWxBqo
+id: dp_content
+theme: dp
+region: content
+weight: -14
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Main page content'
+  provider: system
+  label_display: '0'
+visibility:
+  request_path:
+    id: request_path
+    pages: '<front>'
+    negate: true
+    context_mapping: {  }

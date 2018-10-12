@@ -1,0 +1,40 @@
+uuid: 38057320-5115-499f-967d-3d351d3672da
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.tags
+    - views.view.news_teaser
+  module:
+    - views_field_formatter
+id: taxonomy_term.tags.default
+targetEntityType: taxonomy_term
+bundle: tags
+mode: default
+content:
+  description:
+    label: hidden
+    type: views_field_formatter
+    weight: 0
+    region: content
+    settings:
+      view: 'news_teaser::tags'
+      arguments:
+        entity_id:
+          checked: '1'
+          weight: '0'
+        field_value:
+          weight: '0'
+          checked: 0
+        delta:
+          weight: '0'
+          checked: 0
+        entity_revision_id:
+          weight: '0'
+          checked: 0
+      implode_character: ''
+      hide_empty: 0
+      multiple: 0
+    third_party_settings: {  }
+hidden:
+  langcode: true

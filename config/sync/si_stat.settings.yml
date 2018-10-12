@@ -1,0 +1,16 @@
+display_max_age: 3600
+_core:
+  default_config_hash: UVZwofaFJ3sTdMlQjQUnDqlUSKhtNS7hP48Cs_nOHhM
+enabled_entity_types:
+  block_content: '0'
+  comment: '0'
+  news: '1'
+  node: '1'
+  shortcut: '0'
+  taxonomy_term: '1'
+  user: '0'
+  menu_link_content: '0'
+langcode: ru
+si_stat:
+  day_timestamp: '1532759419'
+day_timestamp: '1532759419'

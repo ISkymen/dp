@@ -1,0 +1,28 @@
+uuid: a89df061-68a2-4ac6-ac42-e8b2798994f5
+langcode: en
+status: true
+dependencies:
+  module:
+    - dp_reward
+    - user
+  theme:
+    - dp
+id: editorsstat
+theme: dp
+region: sidebar_first
+weight: -15
+provider: null
+plugin: dp_block_editors
+settings:
+  id: dp_block_editors
+  label: Статистика
+  provider: dp_reward
+  label_display: visible
+visibility:
+  user_role:
+    id: user_role
+    roles:
+      authenticated: authenticated
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'

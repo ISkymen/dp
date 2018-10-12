@@ -1,0 +1,20 @@
+uuid: caa21e20-0bf0-4b8d-8325-27053398da25
+langcode: en
+status: true
+dependencies:
+  theme:
+    - dpt
+_core:
+  default_config_hash: 13GQpeITIJsp1kyPniXtWZfyFH87vb1xxJCHifL4UeE
+id: dpt_local_actions
+theme: dpt
+region: content
+weight: -17
+provider: null
+plugin: local_actions_block
+settings:
+  id: local_actions_block
+  label: 'Primary admin actions'
+  provider: core
+  label_display: '0'
+visibility: {  }

@@ -1,0 +1,17 @@
+uuid: a9eacd33-1145-4caa-a251-37452649a00f
+langcode: ru
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: rpwvgyEURXLz_JjgMCrkS1rUv-0k3L79BpO-ReN7fDI
+id: node
+label: Содержимое
+tags:
+  canonical_url: '[node:url]'
+  description: '[node:summary]'
+  image_src: '[node:field_image:xlwd]'
+  title: '[node:title] | DonPress.com'
+  og_image: '[node:field_image:xlwd]'
+  og_description: '[node:summary]'
+  twitter_cards_description: '[node:summary]'
+  twitter_cards_image: '[node:field_image:xlwd]'

@@ -1,0 +1,20 @@
+uuid: 103a8616-ccf9-49f4-9acf-167d7599cab5
+langcode: ru
+status: true
+dependencies:
+  module:
+    - quicktabs
+  theme:
+    - dp
+id: quicktabsnewstabs
+theme: dp
+region: sidebar_first
+weight: -11
+provider: null
+plugin: 'quicktabs_block:news_tabs'
+settings:
+  id: 'quicktabs_block:news_tabs'
+  label: 'QuickTabs - News Tabs'
+  provider: quicktabs
+  label_display: '0'
+visibility: {  }

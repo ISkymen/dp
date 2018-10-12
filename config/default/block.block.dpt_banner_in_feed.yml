@@ -1,0 +1,28 @@
+uuid: 9558c86e-e711-4d98-a8e1-87bbc6ffd0f2
+langcode: en
+status: false
+dependencies:
+  module:
+    - adsense
+  theme:
+    - dpt
+id: dpt_banner_in_feed
+theme: dpt
+region: banner_in_feed
+weight: -20
+provider: null
+plugin: adsense_managed_ad_block
+settings:
+  id: adsense_managed_ad_block
+  label: 'Banner In-feed'
+  provider: adsense
+  label_display: '0'
+  ad_slot: '3935824860'
+  ad_format: responsive
+  ad_width: 250
+  ad_height: 250
+  ad_shape:
+    horizontal: horizontal
+    rectangle: rectangle
+  ad_align: center
+visibility: {  }

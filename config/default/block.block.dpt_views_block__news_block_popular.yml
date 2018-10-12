@@ -1,0 +1,24 @@
+uuid: 84d39a00-2f9f-46c3-954d-09bd6b42d32a
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.news_block
+  module:
+    - views
+  theme:
+    - dpt
+id: dpt_views_block__news_block_popular
+theme: dpt
+region: front_top
+weight: -12
+provider: null
+plugin: 'views_block:news_block-popular'
+settings:
+  id: 'views_block:news_block-popular'
+  label: ''
+  provider: views
+  label_display: visible
+  views_label: ''
+  items_per_page: none
+visibility: {  }

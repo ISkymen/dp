@@ -1,0 +1,39 @@
+uuid: bc433bae-6c16-4b10-bda0-3330b34fe3cc
+langcode: ru
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:18b1d9f8-f10f-4a18-8d4f-0334321a13b0'
+  module:
+    - block_content
+    - system
+    - user
+  theme:
+    - dpt
+id: marketgid
+theme: dpt
+region: content_bottom
+weight: -19
+provider: null
+plugin: 'block_content:18b1d9f8-f10f-4a18-8d4f-0334321a13b0'
+settings:
+  id: 'block_content:18b1d9f8-f10f-4a18-8d4f-0334321a13b0'
+  label: Реклама
+  provider: block_content
+  label_display: visible
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: '/news/*'
+    negate: false
+    context_mapping: {  }
+  user_role:
+    id: user_role
+    roles:
+      anonymous: anonymous
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'

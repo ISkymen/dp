@@ -1,0 +1,12 @@
+uuid: cfeb787e-ce99-461e-bbb1-1eb238cdff40
+langcode: ru
+status: false
+dependencies:
+  module:
+    - dp_news
+_core:
+  default_config_hash: ppqfqhFu8p672R1CLw_Cfm5KSkRRcNqtDY3ZBdtF-jQ
+id: news.full
+label: 'Полная версия'
+targetEntityType: news
+cache: true

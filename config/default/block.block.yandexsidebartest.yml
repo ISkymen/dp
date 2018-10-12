@@ -1,0 +1,31 @@
+uuid: cea174bc-8e58-4a6e-8754-ab504a2eb1b4
+langcode: ru
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:ec456984-1112-4935-afb9-a5fc86871bad'
+  module:
+    - block_content
+    - system
+  theme:
+    - dp
+id: yandexsidebartest
+theme: dp
+region: sidebar_second
+weight: 0
+provider: null
+plugin: 'block_content:ec456984-1112-4935-afb9-a5fc86871bad'
+settings:
+  id: 'block_content:ec456984-1112-4935-afb9-a5fc86871bad'
+  label: 'Yandex sidebar test'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: /news/07-08-2018-minzdrav-opublikoval-spisok-opasnyh-dlya-kupaniya-plyazhey-ukrainy
+    negate: false
+    context_mapping: {  }

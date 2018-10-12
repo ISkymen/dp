@@ -1,0 +1,40 @@
+uuid: 665f3fab-a0e4-4130-8f20-2732898a32a1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.rubrics.field_tax_views
+    - taxonomy.vocabulary.rubrics
+  module:
+    - path
+    - text
+id: taxonomy_term.rubrics.default
+targetEntityType: taxonomy_term
+bundle: rubrics
+mode: default
+content:
+  description:
+    type: text_textarea
+    weight: 1
+    region: content
+    settings:
+      placeholder: ''
+      rows: 5
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  field_tax_views: true
+  langcode: true

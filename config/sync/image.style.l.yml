@@ -1,0 +1,15 @@
+uuid: 7eeab028-d77f-4aae-83fe-ec79be1472bf
+langcode: en
+status: true
+dependencies: {  }
+name: l
+label: 'L (680x510)'
+effects:
+  f518e202-8b0f-45ff-a397-4f205d3b75fa:
+    uuid: f518e202-8b0f-45ff-a397-4f205d3b75fa
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 680
+      height: 510
+      anchor: center-center

@@ -1,0 +1,27 @@
+uuid: 3148eb93-9e97-4ea0-a296-1305a7c7cd34
+langcode: ru
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: sL588ui1E_8-2c_UupwyYxcqX2OVyMFp3HTLbbFqvPc
+id: global
+label: Глобальный
+tags:
+  canonical_url: '[current-page:url:absolute]'
+  description: 'Новости Донецкой области, Украины и мира. Оперативная сводка по Донецку и другим городам оккупированной территории.'
+  image_src: 'https://donpress.com/files/donpress_default_0.jpg'
+  title: '[current-page:title] | DonPress.com'
+  fb_app_id: '1533761460235213'
+  theme_color: '#064b86'
+  og_title: '[current-page:title]'
+  og_image: 'https://donpress.com/files/donpress_default_0.jpg'
+  og_type: article
+  og_url: '[current-page:url]'
+  og_description: 'Новости Донецкой области, Украины и мира. Оперативная сводка по Донецку и другим городам оккупированной территории.'
+  og_site_name: '[site:name]'
+  twitter_cards_creator: '@DonPress_com'
+  twitter_cards_title: '[site:name]'
+  twitter_cards_description: 'Новости Донецкой области, Украины и мира. Оперативная сводка по Донецку и другим городам оккупированной территории.'
+  twitter_cards_image: 'https://donpress.com/files/donpress_default_0.jpg'
+  twitter_cards_page_url: '[current-page:url]'
+  twitter_cards_type: summary_large_image

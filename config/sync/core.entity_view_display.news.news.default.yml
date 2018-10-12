@@ -1,0 +1,156 @@
+uuid: 998b3b22-ae21-4cfb-a331-50b6d35dc722
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.news.news.field_news_video
+  module:
+    - blazy
+    - dp_news
+    - image
+    - text
+    - user
+    - video_embed_field
+id: news.news.default
+targetEntityType: news
+bundle: news
+mode: default
+content:
+  addtoany:
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  body:
+    label: hidden
+    type: text_default
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_news_video:
+    type: video_embed_field_video
+    weight: 8
+    region: content
+    label: above
+    settings:
+      responsive: true
+      width: 854
+      height: 480
+      autoplay: false
+    third_party_settings: {  }
+  image:
+    label: hidden
+    type: blazy
+    weight: 2
+    region: content
+    settings:
+      image_style: xlwd
+      thumbnail_style: ''
+      media_switch: ''
+      ratio: '16:9'
+      sizes: ''
+      breakpoints:
+        xs:
+          image_style: ''
+          width: ''
+          breakpoint: ''
+        sm:
+          image_style: ''
+          width: ''
+          breakpoint: ''
+        md:
+          image_style: ''
+          width: ''
+          breakpoint: ''
+        lg:
+          image_style: ''
+          width: ''
+          breakpoint: ''
+        xl:
+          image_style: ''
+          width: ''
+          breakpoint: ''
+      current_view_mode: default
+      background: false
+      caption:
+        title: '0'
+        alt: '0'
+      iframe_lazy: true
+      icon: ''
+      layout: ''
+      view_mode: ''
+      cache: 0
+      optionset: default
+      skin: ''
+      style: ''
+      box_caption: ''
+      box_caption_custom: ''
+      box_style: ''
+      box_media_style: ''
+      responsive_image_style: ''
+      grid: 0
+      grid_header: ''
+      grid_medium: 0
+      grid_small: 0
+    third_party_settings: {  }
+  photo:
+    label: above
+    type: image
+    weight: 4
+    region: content
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+  rss:
+    label: above
+    type: boolean
+    weight: 3
+    region: content
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+  rubric:
+    label: hidden
+    type: entity_reference_label
+    weight: 6
+    region: content
+    settings:
+      link: true
+    third_party_settings: {  }
+  tags:
+    label: inline
+    type: entity_reference_label
+    weight: 9
+    region: content
+    settings:
+      link: true
+    third_party_settings: {  }
+  title:
+    label: hidden
+    type: string
+    weight: 0
+    region: content
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+  topic:
+    label: inline
+    type: entity_reference_label
+    weight: 7
+    region: content
+    settings:
+      link: true
+    third_party_settings: {  }
+  uid:
+    label: hidden
+    type: author
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  langcode: true

@@ -1,0 +1,8 @@
+uuid: fc4f16d3-c726-4d58-be19-b0e635bc7d1c
+langcode: en
+status: true
+dependencies: {  }
+id: dp_short_time
+label: 'DP short time'
+locked: false
+pattern: 'H:i'

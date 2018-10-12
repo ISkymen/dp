@@ -1,0 +1,15 @@
+uuid: 74279e2c-142b-4567-b258-523ba8c4ba9a
+langcode: en
+status: true
+dependencies: {  }
+name: xlwd
+label: 'XLwd (1040x585)'
+effects:
+  a67319f8-a83b-496f-8672-44e4856a026f:
+    uuid: a67319f8-a83b-496f-8672-44e4856a026f
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 1040
+      height: 585
+      anchor: center-center

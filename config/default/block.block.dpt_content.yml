@@ -1,0 +1,27 @@
+uuid: a91908dd-4c62-4f88-b3c0-b43a0567295e
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - dpt
+_core:
+  default_config_hash: 9EoWV2Lot6FVSr50t4hoKgiz1LIXYWNG-IIPYsWxBqo
+id: dpt_content
+theme: dpt
+region: content
+weight: -16
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Main page content'
+  provider: system
+  label_display: '0'
+visibility:
+  request_path:
+    id: request_path
+    pages: '<front>'
+    negate: true
+    context_mapping: {  }

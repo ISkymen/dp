@@ -1,0 +1,10 @@
+uuid: b2f322c4-9702-4e77-90ec-26be65a6ff42
+langcode: ru
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: EOQltUQPmgc6UQ2rcJ4Xi_leCEJj5ui0TR-12duS-Tk
+id: html_date
+label: 'Дата HTML'
+locked: true
+pattern: Y-m-d

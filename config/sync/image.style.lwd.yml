@@ -1,0 +1,15 @@
+uuid: b3c47a0e-b85f-4782-b2ad-d7a3eb6d90e6
+langcode: en
+status: true
+dependencies: {  }
+name: lwd
+label: 'Lwd (680x380)'
+effects:
+  2e8a40b3-4d51-4014-9485-03f737595a2e:
+    uuid: 2e8a40b3-4d51-4014-9485-03f737595a2e
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 680
+      height: 380
+      anchor: center-center

@@ -1,0 +1,20 @@
+uuid: 921ad57b-eba4-45c3-839b-ddc85e11a307
+langcode: en
+status: true
+dependencies:
+  module:
+    - taxonomy
+    - views
+id: taxonomy_term.field_tax_views
+field_name: field_tax_views
+entity_type: taxonomy_term
+type: entity_reference
+settings:
+  target_type: view
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
