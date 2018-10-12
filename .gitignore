@@ -11,5 +11,9 @@ private
 */sites/*/settings.local.php
 */sites/*/local.settings.php
 
+
+# Ignore custom theme's source files.
+*/themes/*/src
+
 .lando.yml
 acquia-pipelines.yml
