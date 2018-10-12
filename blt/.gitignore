@@ -2,8 +2,6 @@ blt
 db
 fronttools
 
-!*/themes/custom/
-
 # Ignore Drupal's file directory
 */sites/*/files
 */sites/*/private
