@@ -5,7 +5,7 @@ fronttools
 # Ignore Drupal's file directory
 */sites/*/files
 */sites/*/private
-files-private
+*/files-private
 private
 
 # Ignore Drupal's local settings file.
