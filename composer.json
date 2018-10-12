@@ -65,7 +65,7 @@
     },
     "autoload": {
         "classmap": [
-            "scripts/"
+            "scripts/composer/ScriptHandler.php"
         ],
         "files": [
             "load.environment.php"
